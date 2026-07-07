@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MONSTER MUSIC | Unleash the Sound</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&amp;family=Hanken+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#3a3939",
+            "primary": "#dbfcff",
+            "on-tertiary-container": "#a83a00",
+            "on-secondary-fixed-variant": "#8f0041",
+            "on-background": "#e5e2e1",
+            "surface-dim": "#131313",
+            "outline-variant": "#3b494b",
+            "on-tertiary": "#5a1b00",
+            "surface-container-low": "#1c1b1b",
+            "inverse-on-surface": "#313030",
+            "on-secondary": "#66002c",
+            "surface-variant": "#353534",
+            "on-primary-fixed-variant": "#004f54",
+            "on-surface": "#e5e2e1",
+            "on-tertiary-fixed-variant": "#802a00",
+            "secondary-fixed-dim": "#ffb1c3",
+            "on-secondary-fixed": "#3f0019",
+            "secondary-fixed": "#ffd9e0",
+            "surface-container-highest": "#353534",
+            "surface-container-high": "#2a2a2a",
+            "inverse-primary": "#006970",
+            "primary-container": "#00f0ff",
+            "on-secondary-container": "#590026",
+            "surface-container-lowest": "#0e0e0e",
+            "primary-fixed": "#7df4ff",
+            "on-primary-fixed": "#002022",
+            "outline": "#849495",
+            "secondary": "#ffb1c3",
+            "error": "#ffb4ab",
+            "surface": "#131313",
+            "on-tertiary-fixed": "#370e00",
+            "tertiary-fixed": "#ffdbce",
+            "on-primary-container": "#006970",
+            "error-container": "#93000a",
+            "tertiary-fixed-dim": "#ffb59a",
+            "background": "#131313",
+            "tertiary": "#fff3f0",
+            "inverse-surface": "#e5e2e1",
+            "surface-tint": "#00dbe9",
+            "on-error": "#690005",
+            "tertiary-container": "#ffcfbe",
+            "secondary-container": "#ff4b89",
+            "surface-container": "#201f1f",
+            "on-primary": "#00363a",
+            "primary-fixed-dim": "#00dbe9",
+            "on-surface-variant": "#b9cacb",
+            "on-error-container": "#ffdad6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-mobile": "20px",
+            "gutter": "24px",
+            "unit": "8px",
+            "margin-desktop": "64px",
+            "container-max": "1440px"
+          },
+          "fontFamily": {
+            "headline-md": ["Montserrat"],
+            "headline-lg-mobile": ["Montserrat"],
+            "label-lg": ["Hanken Grotesk"],
+            "display-lg": ["Montserrat"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-lg": ["Montserrat"],
+            "headline-sm": ["Montserrat"],
+            "body-lg": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+            "headline-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}],
+            "label-lg": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+            "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+            "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+            "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+            "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    @keyframes neon-pulse {
+      0%, 100% { filter: drop-shadow(0 0 5px #00f0ff) drop-shadow(0 0 10px #ff4b89); transform: scale(1); }
+      50% { filter: drop-shadow(0 0 20px #00f0ff) drop-shadow(0 0 30px #ff4b89); transform: scale(1.02); }
+    }
+
+    @keyframes progress-glow {
+      0%, 100% { box-shadow: 0 0 5px #00f0ff; }
+      50% { box-shadow: 0 0 15px #00f0ff; }
+    }
+
+    .animate-logo-glow {
+      animation: neon-pulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    .loader-glow {
+      animation: progress-glow 2s infinite;
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    }
+
+    .loading-text {
+      letter-spacing: 0.5em;
+    }
+
+    #loading-screen {
+      transition: opacity 1.2s cubic-bezier(0.65, 0, 0.35, 1), visibility 1.2s;
+    }
+  </style>
+</head>
+<body class="bg-[#050505] text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-hidden">
+<!-- Background Shader Layer -->
+<div class="fixed inset-0 z-0 opacity-30 mix-blend-screen pointer-events-none">
+</div>
+<!-- Ambient Glows -->
+<div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary-container/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<!-- Loading Screen Canvas -->
+<div class="fixed inset-0 z-[500] flex flex-col items-center justify-center bg-[#050505]" id="loading-screen">
+<!-- Central Content Area -->
+<div class="relative flex flex-col items-center max-w-2xl w-full px-margin-mobile">
+<!-- Metallic Logo -->
+<div class="relative mb-12 animate-logo-glow flex justify-center">
+<img alt="Monster Music Logo" class="w-80 md:w-[480px] h-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9vvVDBsJBa--06xxzieOwlWLfSmGi6EuMKv653d4XA_CKTRbDEoA8tKKbYc8dA7B1Y1WhVNsLletzD9I3WImSMNbIvKFx1Fh2KU2tO9io-HAaciV1JeCQeA6X1XlD_uZlihynngjUPNrmfn8rk6GlyfVSuaMV_aY9b3_EuR8jh-BgQniCga3KqkmdANpXoYmAMK112Z3O8WardBgidVBQs-tqJ32g8ik-xnFyZXT5lkNBguXmvq87BeBjRJ9jRZfCQAk4g96FiCCc"/>
+</div>
+<!-- Loading Interaction Zone -->
+<div class="w-full max-w-md flex flex-col items-center transition-all duration-500 opacity-100 px-4" id="loader-container">
+<!-- Progress Bar Container -->
+<div class="w-full h-[2px] bg-white/10 rounded-full overflow-hidden relative glass-panel mb-8">
+<div class="absolute top-0 left-0 h-full w-0 bg-gradient-to-r from-primary-container to-primary shadow-[0_0_15px_#00f0ff] transition-all duration-[200ms] ease-out" id="progress-bar"></div>
+</div>
+<!-- Status Text -->
+<p class="font-headline-sm text-label-lg uppercase tracking-[0.4em] text-primary/60 loading-text text-center" id="loading-status">
+          UNLEASHING THE SOUND...
+        </p>
+</div>
+<!-- Enter Experience Button (Hidden Initially) -->
+<button class="hidden opacity-0 translate-y-4 px-12 py-4 bg-primary-container text-on-primary-container font-headline-sm text-headline-sm rounded-full shadow-[0_0_30px_rgba(0,240,255,0.6)] hover:shadow-[0_0_50px_rgba(0,240,255,0.8)] hover:scale-105 active:scale-95 transition-all duration-500 uppercase tracking-widest cursor-pointer w-full max-w-xs py-6" id="enter-button">
+        ENTER EXPERIENCE
+      </button>
+</div>
+<!-- Background Noise Overlay -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] z-[501]" style="background-image: url('https://www.transparenttextures.com/patterns/stardust.png');"></div>
+</div>
+<!-- Scripts for Interactions -->
+<script>
+    // Dynamic Web Audio API Synth fallback
+    const synthAudio = {
+      ctx: null,
+      init() {
+        if (!this.ctx) {
+          this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+      },
+      playWhoosh() {
+        this.init();
+        if (typeof Howler === 'undefined' || !Howler._muted) {
+          try {
+            const ctx = this.ctx;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            const filter = ctx.createBiquadFilter();
+            
+            osc.type = 'sawtooth';
+            filter.type = 'bandpass';
+            filter.Q.value = 10;
+            
+            osc.frequency.setValueAtTime(100, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.4);
+            
+            filter.frequency.setValueAtTime(300, ctx.currentTime);
+            filter.frequency.exponentialRampToValueAtTime(3000, ctx.currentTime + 0.4);
+            
+            gain.gain.setValueAtTime(0.01, ctx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.1, ctx.currentTime + 0.1);
+            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
+            
+            osc.connect(filter);
+            filter.connect(gain);
+            gain.connect(ctx.destination);
+            
+            osc.start();
+            osc.stop(ctx.currentTime + 0.4);
+          } catch(e) {}
+        }
+      },
+      playBassHit() {
+        this.init();
+        if (typeof Howler === 'undefined' || !Howler._muted) {
+          try {
+            const ctx = this.ctx;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(120, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + 0.5);
+            
+            gain.gain.setValueAtTime(0.5, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+            
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            
+            osc.start();
+            osc.stop(ctx.currentTime + 0.5);
+          } catch(e) {}
+        }
+      }
+    };
+
+    // Initialize Audio
+    const bassDrop = new Howl({
+      src: ['https://actions.google.com/sounds/v1/horror/creepy_low_drone.ogg'], // Simulated bass drop
+      volume: 0.8
+    });
+
+    const enterSound = new Howl({
+      src: ['https://actions.google.com/sounds/v1/foley/whoosh_foley.ogg'], // Simulated scratch/whoosh
+      volume: 0.6
+    });
+
+    const loadingScreen = document.getElementById('loading-screen');
+    const progressBar = document.getElementById('progress-bar');
+    const loaderContainer = document.getElementById('loader-container');
+    const enterButton = document.getElementById('enter-button');
+    const statusText = document.getElementById('loading-status');
+
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += Math.random() * 8;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(interval);
+        handleLoadComplete();
+      }
+      progressBar.style.width = progress + '%';
+    }, 150);
+
+    function handleLoadComplete() {
+      // Trigger completion sequence
+      try {
+        bassDrop.play();
+      } catch(e) {}
+      synthAudio.playBassHit();
+      
+      setTimeout(() => {
+        // Fade out loader
+        loaderContainer.classList.add('opacity-0', 'pointer-events-none');
+        
+        setTimeout(() => {
+          loaderContainer.classList.add('hidden');
+          // Show Enter Button
+          enterButton.classList.remove('hidden');
+          setTimeout(() => {
+            enterButton.classList.add('opacity-100', 'translate-y-0');
+          }, 50);
+        }, 500);
+      }, 800);
+    }
+
+    enterButton.addEventListener('click', () => {
+      try {
+        enterSound.play();
+      } catch(e) {}
+      synthAudio.playWhoosh();
+      loadingScreen.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        window.location.href = '../monster_music_mobile_experience_home/code.html';
+      }, 1000);
+    });
+  </script>
+</body></html>

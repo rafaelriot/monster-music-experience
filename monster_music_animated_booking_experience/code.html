@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MONSTER MUSIC | Book the Chaos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;0,900;1,900&amp;family=Hanken+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#5a1b00",
+                    "on-primary-container": "#006970",
+                    "inverse-primary": "#006970",
+                    "on-primary-fixed-variant": "#004f54",
+                    "on-error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#ffb1c3",
+                    "tertiary": "#fff3f0",
+                    "on-secondary-fixed": "#3f0019",
+                    "primary-fixed-dim": "#00dbe9",
+                    "on-secondary-fixed-variant": "#8f0041",
+                    "surface-bright": "#3a3939",
+                    "surface-container-low": "#1c1b1b",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-container-high": "#2a2a2a",
+                    "surface": "#131313",
+                    "on-tertiary-container": "#a83a00",
+                    "on-primary": "#00363a",
+                    "secondary-fixed": "#ffd9e0",
+                    "outline": "#849495",
+                    "on-surface-variant": "#b9cacb",
+                    "on-tertiary-fixed": "#370e00",
+                    "error": "#ffb4ab",
+                    "surface-tint": "#00dbe9",
+                    "on-secondary": "#66002c",
+                    "surface-container": "#201f1f",
+                    "secondary-container": "#ff4b89",
+                    "on-tertiary-fixed-variant": "#802a00",
+                    "on-primary-fixed": "#002022",
+                    "on-error": "#690005",
+                    "surface-container-highest": "#353534",
+                    "on-surface": "#e5e2e1",
+                    "on-secondary-container": "#590026",
+                    "secondary": "#ffb1c3",
+                    "inverse-on-surface": "#313030",
+                    "surface-variant": "#353534",
+                    "on-background": "#e5e2e1",
+                    "tertiary-container": "#ffcfbe",
+                    "tertiary-fixed-dim": "#ffb59a",
+                    "tertiary-fixed": "#ffdbce",
+                    "error-container": "#93000a",
+                    "background": "#131313",
+                    "surface-dim": "#131313",
+                    "outline-variant": "#3b494b",
+                    "primary-container": "#00f0ff",
+                    "surface-container-lowest": "#0e0e0e",
+                    "primary-fixed": "#7df4ff",
+                    "primary": "#dbfcff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1440px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Montserrat"],
+                    "display-lg": ["Montserrat"],
+                    "headline-md": ["Montserrat"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-lg": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "headline-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #050505; color: #e5e2e1; overflow-x: hidden; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-panel::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        }
+        .neon-glow-cyan { box-shadow: 0 0 20px rgba(0, 240, 255, 0.3); }
+        .neon-glow-magenta { box-shadow: 0 0 20px rgba(255, 75, 137, 0.3); }
+        .chaos-pulse {
+            animation: pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.6); transform: scale(1); }
+            50% { box-shadow: 0 0 35px rgba(0, 240, 255, 0.9); transform: scale(1.05); }
+        }
+        .step-transition { transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
+        .noise-overlay {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            z-index: 50;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #00f0ff !important;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        }
+        .bass-drop-flash {
+            position: fixed;
+            inset: 0;
+            background: white;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container">
+<div class="noise-overlay"></div>
+<div class="bass-drop-flash" id="flash"></div>
+<!-- Background Shader -->
+
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-[100] bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+<div class="flex justify-between items-center h-20 px-margin-desktop w-full max-w-container-max mx-auto">
+<a href="../monster_music_home_experience/code.html" class="font-display-lg text-headline-md tracking-tighter italic text-primary drop-shadow-[0_0_15px_rgba(0,219,233,0.8)]">
+                MONSTER MUSIC
+            </a>
+<nav class="hidden md:flex space-x-8">
+<a class="font-label-lg text-label-lg text-on-surface-variant/80 hover:text-primary transition-colors duration-300" href="../monster_music_home_experience/code.html" data-i18n="nav_home">Home</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant/80 hover:text-primary transition-colors duration-300" href="../monster_music_dj_gallery_experience/code.html" data-i18n="nav_artists">Artists</a>
+<a class="font-label-lg text-label-lg text-primary-fixed font-bold border-b-2 border-primary-container drop-shadow-[0_0_10px_#00f0ff]" href="#" data-i18n="nav_reserve">Reserve</a>
+</nav>
+<div class="flex items-center space-x-6">
+<button class="font-label-lg text-label-lg text-primary hover:text-white transition-colors uppercase border border-primary/30 px-2 py-1 rounded" id="lang-toggle">ES</button>
+<span class="material-symbols-outlined text-primary cursor-pointer" id="mute-toggle">volume_up</span>
+<span class="material-symbols-outlined text-primary cursor-pointer">account_circle</span>
+</div>
+</div>
+</header>
+<main class="relative pt-32 pb-20 px-margin-mobile md:px-margin-desktop max-w-5xl mx-auto z-10">
+<!-- Progress Indicator -->
+<div class="flex justify-between mb-12 relative">
+<div class="absolute top-1/2 left-0 w-full h-px bg-white/10 -z-10"></div>
+<div class="absolute top-1/2 left-0 h-px bg-primary-container -z-10 transition-all duration-700 w-0" id="progress-bar"></div>
+<div class="step-indicator flex flex-col items-center gap-2" data-step="1">
+<div class="w-10 h-10 rounded-full flex items-center justify-center glass-panel border-primary-container text-primary shadow-[0_0_10px_rgba(0,240,255,0.5)]">1</div>
+<span class="font-label-lg text-label-lg text-primary" data-i18n="step_details">DETAILS</span>
+</div>
+<div class="step-indicator flex flex-col items-center gap-2" data-step="2">
+<div class="w-10 h-10 rounded-full flex items-center justify-center glass-panel text-on-surface-variant">2</div>
+<span class="font-label-lg text-label-lg text-on-surface-variant" data-i18n="step_talent">TALENT</span>
+</div>
+<div class="step-indicator flex flex-col items-center gap-2" data-step="3">
+<div class="w-10 h-10 rounded-full flex items-center justify-center glass-panel text-on-surface-variant">3</div>
+<span class="font-label-lg text-label-lg text-on-surface-variant" data-i18n="step_production">PRODUCTION</span>
+</div>
+</div>
+<!-- Form Container -->
+<div class="relative overflow-hidden min-h-[1050px] md:min-h-[780px]" id="form-steps-wrapper">
+<!-- Step 1: Event Details -->
+<section class="step-transition absolute inset-0 w-full" id="step-1">
+<h1 class="font-headline-lg text-headline-lg mb-4 text-primary" data-i18n="s1_title">UNLEASH THE EVENT</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10" data-i18n="s1_desc">The first step to engineered chaos is defining the arena.</p>
+<div class="glass-panel p-8 rounded-xl grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col gap-2">
+<label class="font-label-lg text-label-lg text-secondary" data-i18n="s1_event_name">EVENT NAME</label>
+<input id="event-name" class="bg-white/5 border-b-2 border-white/10 p-4 rounded-t-lg transition-all text-on-surface font-headline-sm" data-i18n-placeholder="s1_event_name_placeholder" placeholder="e.g. NEON VORTEX" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-lg text-label-lg text-secondary" data-i18n="s1_target_date">TARGET DATE</label>
+<input id="event-date" class="bg-white/5 border-b-2 border-white/10 p-4 rounded-t-lg transition-all text-on-surface font-body-lg" type="date"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-lg text-label-lg text-secondary" data-i18n="s1_event_type">EVENT TYPE</label>
+<select class="bg-white/5 border-b-2 border-white/10 p-4 rounded-t-lg transition-all text-on-surface font-body-lg cursor-pointer outline-none focus:border-primary-container" id="event-type-select">
+  <option class="bg-[#050505] text-white" value="boda" data-i18n="opt_wedding">Boda</option>
+  <option class="bg-[#050505] text-white" value="xv" data-i18n="opt_xv">15 Años</option>
+  <option class="bg-[#050505] text-white" value="cumpleanos" data-i18n="opt_birthday">Cumpleaños</option>
+  <option class="bg-[#050505] text-white" value="graduacion" data-i18n="opt_graduation">Graduación</option>
+  <option class="bg-[#050505] text-white" value="corporativo" data-i18n="opt_corporate">Corporativo</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-lg text-label-lg text-secondary" data-i18n="s1_guest_count">GUEST COUNT</label>
+<select class="bg-white/5 border-b-2 border-white/10 p-4 rounded-t-lg transition-all text-on-surface font-body-lg cursor-pointer outline-none focus:border-primary-container" id="guest-count-select">
+  <option class="bg-[#050505] text-white" value="50-100">50 - 100</option>
+  <option class="bg-[#050505] text-white" value="100-250">100 - 250</option>
+  <option class="bg-[#050505] text-white" value="250-500">250 - 500</option>
+  <option class="bg-[#050505] text-white" value="500-1000">500 - 1000</option>
+  <option class="bg-[#050505] text-white" value="1000+">1000+</option>
+</select>
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="font-label-lg text-label-lg text-secondary" data-i18n="s1_venue_type">VENUE TYPE</label>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
+<button class="venue-btn p-4 glass-panel rounded-xl hover:border-primary-container transition-all group active:scale-95">
+<span class="material-symbols-outlined text-4xl block mb-2 group-hover:text-primary">hotel</span>
+<span class="font-label-lg" data-i18n="s1_venue_stadium">HOTEL</span>
+</button>
+<button class="venue-btn p-4 glass-panel rounded-xl hover:border-primary-container transition-all group active:scale-95">
+<span class="material-symbols-outlined text-4xl block mb-2 group-hover:text-primary">celebration</span>
+<span class="font-label-lg" data-i18n="s1_venue_nightclub">EVENT SALON</span>
+</button>
+<button class="venue-btn p-4 glass-panel rounded-xl hover:border-primary-container transition-all group active:scale-95">
+<span class="material-symbols-outlined text-4xl block mb-2 group-hover:text-primary">yard</span>
+<span class="font-label-lg" data-i18n="s1_venue_warehouse">PALAPA / GARDEN</span>
+</button>
+<button class="venue-btn p-4 glass-panel rounded-xl hover:border-primary-container transition-all group active:scale-95">
+<span class="material-symbols-outlined text-4xl block mb-2 group-hover:text-primary">pool</span>
+<span class="font-label-lg" data-i18n="s1_venue_outdoor">PALAPA / POOL</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="font-label-lg text-label-lg text-secondary" data-i18n="s1_event_description">EVENT DESCRIPTION</label>
+<textarea id="event-description" class="bg-white/5 border border-white/10 p-4 rounded-lg transition-all text-on-surface font-body-lg h-24 resize-none outline-none focus:border-primary-container" data-i18n-placeholder="s1_event_description_placeholder" placeholder="Describe the style, theme, or special requests for your event..."></textarea>
+</div>
+</div>
+</section>
+<!-- Step 2: Talent Selection -->
+<section class="step-transition absolute inset-0 w-full translate-x-full opacity-0" id="step-2">
+<h1 class="font-headline-lg text-headline-lg mb-4 text-secondary" data-i18n="s2_title">SELECT YOUR WEAPON</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10" data-i18n="s2_desc">Choose the auditory architects for your sonic assault.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Elite Card -->
+<div class="talent-card glass-panel p-6 rounded-xl border-white/5 hover:border-primary-container transition-all cursor-pointer group active:scale-95">
+<div class="h-48 mb-6 overflow-hidden rounded-lg">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A cinematic close-up of a high-tech DJ controller in a dark, neon-lit studio. Deep cyan and magenta light reflects off polished metal surfaces and glowing faders. The mood is professional, exclusive, and futuristic, representing high-end audio engineering." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA5NJcZspMQ_MNq9PBv5p3S-MH_rHGDEcV3d0JGgCErlBPJuk_FcxK5rhNflzIaarIQm8Oxj3cfRi3wcSPcMKnyPAOZ9AOYJyPgwqxcg4MKqcPZAeZWdu68uc6wGGjdtcXekk36iGJwSRppHw9Vz34ruX9-KE8W9QJnpWjVUn3x2RnQp_oO3Po2Iz1-EnK6fR75Y17ri1yofPPEr7KhSfl40xhy673WhnnDT6lc-VHQEKjLu96672arsnBiV56Udlhg07f0YscbyPYc')"></div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2" data-i18n="s2_elite">ELITE</h3>
+<p class="font-body-md text-on-surface-variant mb-4" data-i18n="s2_elite_desc">Precision soundscapes for sophisticated atmospheres.</p>
+<div class="flex items-center gap-2 text-secondary font-label-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span> <span data-i18n="s2_2_artists">2 ARTISTS</span>
+                        </div>
+</div>
+<!-- Chaos Card -->
+<div class="talent-card glass-panel p-6 rounded-xl border-primary-container/50 bg-primary/5 hover:border-primary-container transition-all cursor-pointer group active:scale-95">
+<div class="h-48 mb-6 overflow-hidden rounded-lg">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A vibrant, high-energy photo of a large crowd at a music festival with massive light beams cutting through smoke. Explosions of magenta and cyan lights illuminate the scene." style="background-image: url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=600')"></div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2" data-i18n="s2_chaos">CHAOS</h3>
+<p class="font-body-md text-on-surface-variant mb-4" data-i18n="s2_chaos_desc">Maximum intensity for the truly unhinged.</p>
+<div class="flex items-center gap-2 text-secondary font-label-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span> <span data-i18n="s2_4_artists">4 ARTISTS</span>
+                        </div>
+</div>
+<!-- Ultra Card -->
+<div class="talent-card glass-panel p-6 rounded-xl border-white/5 hover:border-primary-container transition-all cursor-pointer group active:scale-95">
+<div class="h-48 mb-6 overflow-hidden rounded-lg">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="An awe-inspiring wide shot of a futuristic stadium concert stage with massive 3D holographic projections. Incredible lasers and volumetric lighting effects fill the air in a spectrum of electric blues and vivid pinks. The setting looks like a peak-tier luxury entertainment event of the future." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRHDaZmxviQmg8lS1amAZ7V3c-5NkWXJHaE1xaQXJN05l4L4t_EiiU4YtWcR9lWczAlrpzWikZpaJoGmROWDCY4ZBn7Y_kG17w-cXn8_085NzRr9a5MqjQmFUyepHhdumUWFa7e90Iz-UQFRefAmlLggpbgwdYhYSSQz1cHvKLWYBOQpaTd5u7JplZIUwPkzpiUSiU3pItwfV9nTgzS6JNZTRRYo31vL_quJcBRPEhKC5fy3QNToag812_9bQmFdnFBtZa5QTmR6ou')"></div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2" data-i18n="s2_ultra">ULTRA</h3>
+<p class="font-body-md text-on-surface-variant mb-4" data-i18n="s2_ultra_desc">God-tier production. No survivors.</p>
+<div class="flex items-center gap-2 text-secondary font-label-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span> <span data-i18n="s2_full_collective">FULL COLLECTIVE</span>
+                        </div>
+</div>
+</div>
+</section>
+<!-- Step 3: Production Scale -->
+<section class="step-transition absolute inset-0 w-full translate-x-full opacity-0" id="step-3">
+<h1 class="font-headline-lg text-headline-lg mb-4 text-primary" data-i18n="s3_title">ARM YOURSELF</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10" data-i18n="s3_desc">Add the visual weaponry to complete the sensory overload.</p>
+<div class="glass-panel p-8 rounded-xl">
+<div class="space-y-6">
+<div class="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/10 hover:border-secondary transition-all">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary text-3xl">blur_on</span>
+<div>
+<p class="font-headline-sm text-lg" data-i18n="s3_visual_fx">VISUAL FX</p>
+<p class="text-sm text-on-surface-variant" data-i18n="s3_visual_fx_desc">Real-time reactive generative visuals.</p>
+</div>
+</div>
+<input id="prod-visual-fx" class="w-6 h-6 rounded bg-black border-white/20 text-primary-container focus:ring-primary-container" type="checkbox"/>
+</div>
+<div class="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/10 hover:border-secondary transition-all">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary text-3xl">view_in_ar</span>
+<div>
+<p class="font-headline-sm text-lg" data-i18n="s3_3d_projections">3D PROJECTIONS</p>
+<p class="text-sm text-on-surface-variant" data-i18n="s3_3d_projections_desc">Holographic depth mapping.</p>
+</div>
+</div>
+<input id="prod-3d-projections" class="w-6 h-6 rounded bg-black border-white/20 text-primary-container focus:ring-primary-container" type="checkbox"/>
+</div>
+<div class="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/10 hover:border-secondary transition-all">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary text-3xl">local_fire_department</span>
+<div>
+<p class="font-headline-sm text-lg" data-i18n="s3_pyrotechnics">PYROTECHNICS</p>
+<p class="text-sm text-on-surface-variant" data-i18n="s3_pyrotechnics_desc">Syncronized flame jets and sparks.</p>
+</div>
+</div>
+<input id="prod-pyrotechnics" class="w-6 h-6 rounded bg-black border-white/20 text-primary-container focus:ring-primary-container" type="checkbox"/>
+</div>
+</div>
+<div class="mt-10 pt-10 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-lg text-label-lg text-secondary" data-i18n="s3_email">CONTACT EMAIL</label>
+<input id="contact-email" class="bg-white/5 border-b-2 border-white/10 p-3 rounded-t-lg transition-all text-on-surface" data-i18n-placeholder="s3_email_placeholder" placeholder="YOU@CHAOS.COM" type="email"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-lg text-label-lg text-secondary" data-i18n="s3_phone">PHONE</label>
+<input id="contact-phone" class="bg-white/5 border-b-2 border-white/10 p-3 rounded-t-lg transition-all text-on-surface" data-i18n-placeholder="s3_phone_placeholder" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Success State -->
+<section class="step-transition absolute inset-0 w-full translate-y-full opacity-0 flex flex-col items-center justify-center text-center" id="success-state">
+<div class="w-32 h-32 glass-panel rounded-full flex items-center justify-center mb-8 border-primary-container shadow-[0_0_50px_rgba(0,240,255,0.8)]">
+<span class="material-symbols-outlined text-7xl text-primary animate-bounce">check_circle</span>
+</div>
+<h1 class="font-display-lg text-headline-lg mb-4 text-primary-container" data-i18n="success_title">CHAOS CONFIRMED</h1>
+<p class="font-body-lg text-body-lg max-w-lg" data-i18n="success_desc">The sonic engineers have received your transmission. Prepare for the impact.</p>
+<button class="mt-12 px-8 py-3 glass-panel rounded-full font-label-lg border-secondary text-secondary hover:bg-secondary/10 transition-all" onclick="window.location.reload()" data-i18n="success_btn">START NEW MISSION</button>
+</section>
+</div>
+<!-- Navigation Buttons -->
+<div class="mt-12 flex justify-between items-center" id="nav-controls">
+<button class="hidden px-8 py-3 glass-panel rounded-full font-label-lg text-on-surface-variant hover:text-primary transition-all disabled:opacity-30" id="prev-btn" data-i18n="btn_back">BACK</button>
+<div class="flex-grow"></div>
+<button class="px-10 py-4 bg-primary-container text-on-primary-fixed font-display-lg text-label-lg rounded-full chaos-pulse tracking-widest hover:scale-105 transition-all" id="next-btn" data-i18n="btn_next">NEXT STEP</button>
+<button class="hidden px-10 py-4 bg-secondary-container text-on-secondary-container font-display-lg text-label-lg rounded-full chaos-pulse tracking-widest hover:scale-105 transition-all" id="submit-btn" data-i18n="btn_submit">DROP THE BASS</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-white/5 bg-gradient-to-b from-transparent to-black mt-20">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto space-y-4 md:space-y-0">
+<div class="font-headline-sm text-primary">MONSTER MUSIC</div>
+<div class="font-body-md text-body-md text-on-surface-variant" data-i18n="footer_tagline">© 2024 MONSTER MUSIC. ENGINEERED FOR CHAOS.</div>
+<div class="flex gap-6">
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-secondary-fixed transition-colors font-bold text-primary-fixed" href="https://www.facebook.com/sonidomonstermusic" target="_blank">Facebook</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-secondary-fixed transition-colors font-bold text-[#25D366]" href="https://wa.me/5219935914474" target="_blank">WhatsApp</a>
+</div>
+</div>
+</footer>
+<script>
+        // Sound Effects & Background Music
+        const bgMusic = new Howl({
+            src: ['https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'],
+            html5: true,
+            loop: true,
+            volume: 0.15
+        });
+
+        const whoosh = new Howl({ src: ['https://assets.mixkit.co/sfx/preview/mixkit-fast-rocket-whoosh-1714.mp3'], volume: 0.4 });
+        const hum = new Howl({ src: ['https://assets.mixkit.co/sfx/preview/mixkit-fluorescent-lamp-hum-noise-2454.mp3'], volume: 0.1, loop: true });
+        const drop = new Howl({ src: ['https://assets.mixkit.co/sfx/preview/mixkit-electronic-retro-glitch-446.mp3'], volume: 0.8 });
+
+        // Sync mute state on startup
+        let isMuted = localStorage.getItem('monster_music_muted') === 'true';
+        Howler.mute(isMuted);
+
+        function startBgMusic() {
+            if (!bgMusic.playing()) {
+                bgMusic.play();
+            }
+        }
+        document.addEventListener('click', startBgMusic, { once: true });
+        document.addEventListener('keydown', startBgMusic, { once: true });
+
+        // Sync Mute Icon and Trigger
+        const muteBtn = document.getElementById('mute-toggle');
+        function updateMuteState() {
+            Howler.mute(isMuted);
+            localStorage.setItem('monster_music_muted', isMuted);
+            if (muteBtn) {
+                muteBtn.textContent = isMuted ? 'volume_off' : 'volume_up';
+            }
+        }
+        updateMuteState();
+        if (muteBtn) {
+            muteBtn.addEventListener('click', () => {
+                isMuted = !isMuted;
+                updateMuteState();
+            });
+        }
+
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const flash = document.getElementById('flash');
+
+        function updateUI() {
+            // Update progress bar
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            progressBar.style.width = `${progress}%`;
+
+            // Update Indicators
+            document.querySelectorAll('.step-indicator').forEach((ind, idx) => {
+                const stepNum = idx + 1;
+                const circle = ind.querySelector('div');
+                const label = ind.querySelector('span');
+                
+                if (stepNum === currentStep) {
+                    circle.classList.add('border-primary-container', 'text-primary', 'shadow-[0_0_10px_rgba(0,240,255,0.5)]');
+                    label.classList.add('text-primary');
+                    label.classList.remove('text-on-surface-variant');
+                } else if (stepNum < currentStep) {
+                    circle.classList.add('bg-primary-container', 'text-black');
+                    circle.classList.remove('text-on-surface-variant');
+                } else {
+                    circle.classList.remove('border-primary-container', 'text-primary', 'shadow-[0_0_10px_rgba(0,240,255,0.5)]', 'bg-primary-container', 'text-black');
+                    circle.classList.add('text-on-surface-variant');
+                    label.classList.remove('text-primary');
+                    label.classList.add('text-on-surface-variant');
+                }
+            });
+
+            // Toggle sections
+            for(let i=1; i<=totalSteps; i++) {
+                const el = document.getElementById(`step-${i}`);
+                if(i === currentStep) {
+                    el.classList.remove('translate-x-full', '-translate-x-full', 'opacity-0');
+                } else if (i < currentStep) {
+                    el.classList.add('-translate-x-full', 'opacity-0');
+                    el.classList.remove('translate-x-full');
+                } else {
+                    el.classList.add('translate-x-full', 'opacity-0');
+                    el.classList.remove('-translate-x-full');
+                }
+            }
+
+            // Button states
+            prevBtn.classList.toggle('hidden', currentStep === 1);
+            nextBtn.classList.toggle('hidden', currentStep === totalSteps);
+            submitBtn.classList.toggle('hidden', currentStep !== totalSteps);
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentStep < totalSteps) {
+                whoosh.play();
+                currentStep++;
+                updateUI();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+                whoosh.play();
+                currentStep--;
+                updateUI();
+            }
+        });
+
+        submitBtn.addEventListener('click', () => {
+            drop.play();
+            
+            // Bass drop effect
+            flash.style.opacity = '1';
+            setTimeout(() => {
+                flash.style.transition = 'opacity 1.5s ease-out';
+                flash.style.opacity = '0';
+            }, 50);
+
+            // Hide main UI
+            document.getElementById('step-3').classList.add('translate-y-[-100%]', 'opacity-0');
+            document.getElementById('nav-controls').classList.add('hidden');
+            document.querySelector('.relative.mb-12').classList.add('opacity-0');
+            
+            // Show Success
+            setTimeout(() => {
+                const success = document.getElementById('success-state');
+                success.classList.remove('translate-y-full', 'opacity-0');
+                success.classList.add('translate-y-0', 'opacity-100');
+            }, 300);
+
+            // Build WhatsApp Message
+            const eventNameVal = document.getElementById('event-name').value || 'Sin nombre';
+            const eventDateVal = document.getElementById('event-date').value || 'Sin fecha';
+            
+            const typeSelect = document.getElementById('event-type-select');
+            const eventTypeVal = typeSelect ? typeSelect.options[typeSelect.selectedIndex].text : 'No especificado';
+            
+            const guestSelect = document.getElementById('guest-count-select');
+            const guestCountVal = guestSelect ? guestSelect.value : 'No especificado';
+            
+            const selectedVenueEl = document.querySelector('.venue-btn.border-primary-container span.font-label-lg');
+            const venueTypeVal = selectedVenueEl ? selectedVenueEl.textContent.trim() : 'No especificado';
+            
+            const selectedTalentEl = document.querySelector('.talent-card.border-primary-container h3') || document.querySelector('.talent-card.border-primary-container\\/50 h3');
+            const talentPackageVal = selectedTalentEl ? selectedTalentEl.textContent.trim() : 'CAOS';
+            
+            const visualFxVal = document.getElementById('prod-visual-fx').checked ? '✅ Sí' : '❌ No';
+            const projections3dVal = document.getElementById('prod-3d-projections').checked ? '✅ Sí' : '❌ No';
+            const pyrotechnicsVal = document.getElementById('prod-pyrotechnics').checked ? '✅ Sí' : '❌ No';
+            
+            const eventDescVal = document.getElementById('event-description').value || 'Sin descripción';
+            const contactEmailVal = document.getElementById('contact-email').value || 'Sin correo';
+            const contactPhoneVal = document.getElementById('contact-phone').value || 'Sin teléfono';
+
+            const waText = 
+`⚡ *NUEVA RESERVA DE SHOW - MONSTER MUSIC* ⚡
+
+*Detalles del Evento:*
+• *Nombre:* ${eventNameVal}
+• *Fecha:* ${eventDateVal}
+• *Tipo:* ${eventTypeVal}
+• *Invitados:* ${guestCountVal} personas
+• *Lugar:* ${venueTypeVal}
+
+*Configuración del Show:*
+• *Paquete de Talento:* ${talentPackageVal}
+• *Efectos Visuales:* ${visualFxVal}
+• *Proyecciones 3D:* ${projections3dVal}
+• *Pirotecnia:* ${pyrotechnicsVal}
+
+*Descripción del Evento:*
+"${eventDescVal}"
+
+*Contacto del Cliente:*
+• *Correo:* ${contactEmailVal}
+• *Teléfono:* ${contactPhoneVal}
+
+⚡ _Transmisión enviada desde el portal web._`;
+
+            const waUrl = `https://wa.me/5219935914474?text=${encodeURIComponent(waText)}`;
+            
+            // Open WhatsApp in a new tab/window after a short delay
+            setTimeout(() => {
+                window.open(waUrl, '_blank');
+            }, 1200);
+        });
+
+        // Input hum interactions
+        document.querySelectorAll('input, select, textarea, button').forEach(el => {
+            el.addEventListener('focus', () => hum.play());
+            el.addEventListener('blur', () => hum.stop());
+            el.addEventListener('mouseenter', () => {
+                if(el.tagName === 'BUTTON' || el.classList.contains('talent-card') || el.classList.contains('venue-btn')) {
+                    // Slight vibration logic could go here
+                }
+            });
+        });
+
+        // Toggle Selection Logic for Custom Elements
+        document.querySelectorAll('.venue-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.venue-btn').forEach(b => b.classList.remove('border-primary-container', 'bg-primary/10'));
+                btn.classList.add('border-primary-container', 'bg-primary/10');
+                whoosh.play();
+            });
+        });
+
+        document.querySelectorAll('.talent-card').forEach(card => {
+            card.addEventListener('click', () => {
+                document.querySelectorAll('.talent-card').forEach(c => {
+                    c.classList.remove('border-primary-container', 'border-primary-container/50', 'bg-primary/5');
+                    c.classList.add('border-white/5');
+                });
+                card.classList.remove('border-white/5');
+                card.classList.add('border-primary-container', 'bg-primary/5');
+                whoosh.play();
+            });
+        });
+
+        // Language translation system
+        const translations = {
+            es: {
+                nav_home: "Inicio",
+                nav_artists: "Artistas",
+                nav_reserve: "Reserva",
+                step_details: "DETALLES",
+                step_talent: "TALENTO",
+                step_production: "PRODUCCIÓN",
+                s1_title: "DESATA EL EVENTO",
+                s1_desc: "El primer paso para el caos estructurado es definir la arena.",
+                s1_event_name: "NOMBRE DEL EVENTO",
+                s1_event_name_placeholder: "ej. VÓRTICE NEÓN",
+                s1_target_date: "FECHA OBJETIVO",
+                s1_event_type: "TIPO DE EVENTO",
+                s1_guest_count: "CANTIDAD DE PERSONAS",
+                opt_wedding: "Boda",
+                opt_xv: "15 Años",
+                opt_birthday: "Cumpleaños",
+                opt_graduation: "Graduación",
+                opt_corporate: "Corporativo",
+                s1_venue_type: "TIPO DE LUGAR",
+                s1_venue_stadium: "HOTEL",
+                s1_venue_nightclub: "SALÓN DE EVENTOS",
+                s1_venue_warehouse: "PALAPA / JARDÍN",
+                s1_venue_outdoor: "PALAPA / ALBERCA",
+                s1_event_description: "DESCRIPCIÓN DEL EVENTO",
+                s1_event_description_placeholder: "Describe el estilo, temática o peticiones especiales para tu evento...",
+                s2_title: "SELECCIONA TU ARMA",
+                s2_desc: "Elige a los arquitectos auditivos para tu asalto sonoro.",
+                s2_elite: "ÉLITE",
+                s2_elite_desc: "Paisajes sonoros de precisión para atmósferas sofisticadas.",
+                s2_2_artists: "2 ARTISTAS",
+                s2_chaos: "CAOS",
+                s2_chaos_desc: "Máxima intensidad para los verdaderamente desquiciados.",
+                s2_4_artists: "4 ARTISTAS",
+                s2_ultra: "ULTRA",
+                s2_ultra_desc: "Producción nivel Dios. Sin sobrevivientes.",
+                s2_full_collective: "COLECTIVO COMPLETO",
+                s3_title: "ÁRMATE",
+                s3_desc: "Añade el armamento visual para completar la sobrecarga sensorial.",
+                s3_visual_fx: "EFECTOS VISUALES",
+                s3_visual_fx_desc: "Efectos visuales generativos reactivos en tiempo real.",
+                s3_3d_projections: "PROYECCIONES 3D",
+                s3_3d_projections_desc: "Mapeo de profundidad holográfico.",
+                s3_pyrotechnics: "PIROTECNIA",
+                s3_pyrotechnics_desc: "Chorros de llamas y chispas sincronizados.",
+                s3_email: "CORREO DE CONTACTO",
+                s3_email_placeholder: "TU@CAOS.COM",
+                s3_phone: "TELÉFONO",
+                s3_phone_placeholder: "+52 (993) 000-0000",
+                success_title: "CAOS CONFIRMADO",
+                success_desc: "Los ingenieros sonoros han recibido tu transmisión. Prepárate para el impacto.",
+                success_btn: "INICIAR NUEVA MISIÓN",
+                btn_back: "ATRÁS",
+                btn_next: "SIGUIENTE PASO",
+                btn_submit: "SOLTAR EL BAJO",
+                footer_tagline: "© 2024 MONSTER MUSIC. DISEÑADO PARA EL CAOS."
+            },
+            en: {
+                nav_home: "Home",
+                nav_artists: "Artists",
+                nav_reserve: "Reserve",
+                step_details: "DETAILS",
+                step_talent: "TALENT",
+                step_production: "PRODUCTION",
+                s1_title: "UNLEASH THE EVENT",
+                s1_desc: "The first step to engineered chaos is defining the arena.",
+                s1_event_name: "EVENT NAME",
+                s1_event_name_placeholder: "e.g. NEON VORTEX",
+                s1_target_date: "TARGET DATE",
+                s1_event_type: "EVENT TYPE",
+                s1_guest_count: "GUEST COUNT",
+                opt_wedding: "Wedding",
+                opt_xv: "XV Years",
+                opt_birthday: "Birthday",
+                opt_graduation: "Graduation",
+                opt_corporate: "Corporate",
+                s1_venue_type: "VENUE TYPE",
+                s1_venue_stadium: "HOTEL",
+                s1_venue_nightclub: "EVENT SALON",
+                s1_venue_warehouse: "PALAPA / GARDEN",
+                s1_venue_outdoor: "PALAPA / POOL",
+                s1_event_description: "EVENT DESCRIPTION",
+                s1_event_description_placeholder: "Describe the style, theme, or special requests for your event...",
+                s2_title: "SELECT YOUR WEAPON",
+                s2_desc: "Choose the auditory architects for your sonic assault.",
+                s2_elite: "ELITE",
+                s2_elite_desc: "Precision soundscapes for sophisticated atmospheres.",
+                s2_2_artists: "2 ARTISTS",
+                s2_chaos: "CHAOS",
+                s2_chaos_desc: "Maximum intensity for the truly unhinged.",
+                s2_4_artists: "4 ARTISTS",
+                s2_ultra: "ULTRA",
+                s2_ultra_desc: "God-tier production. No survivors.",
+                s2_full_collective: "FULL COLLECTIVE",
+                s3_title: "ARM YOURSELF",
+                s3_desc: "Add the visual weaponry to complete the sensory overload.",
+                s3_visual_fx: "VISUAL FX",
+                s3_visual_fx_desc: "Real-time reactive generative visuals.",
+                s3_3d_projections: "3D PROJECTIONS",
+                s3_3d_projections_desc: "Holographic depth mapping.",
+                s3_pyrotechnics: "PYROTECHNICS",
+                s3_pyrotechnics_desc: "Syncronized flame jets and sparks.",
+                s3_email: "CONTACT EMAIL",
+                s3_email_placeholder: "YOU@CHAOS.COM",
+                s3_phone: "PHONE",
+                s3_phone_placeholder: "+1 (555) 000-0000",
+                success_title: "CHAOS CONFIRMED",
+                success_desc: "The sonic engineers have received your transmission. Prepare for the impact.",
+                success_btn: "START NEW MISSION",
+                btn_back: "BACK",
+                btn_next: "NEXT STEP",
+                btn_submit: "DROP THE BASS",
+                footer_tagline: "© 2024 MONSTER MUSIC. ENGINEERED FOR CHAOS."
+            }
+        };
+
+        let currentLang = localStorage.getItem('monster_music_lang') || 'es';
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('monster_music_lang', lang);
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    el.setAttribute('placeholder', translations[lang][key]);
+                }
+            });
+            const toggleBtn = document.getElementById('lang-toggle');
+            if (toggleBtn) {
+                toggleBtn.textContent = lang.toUpperCase();
+            }
+        }
+
+        const langBtn = document.getElementById('lang-toggle');
+        if (langBtn) {
+            langBtn.addEventListener('click', () => {
+                try {
+                    whoosh.play();
+                } catch(e) {}
+                const nextLang = currentLang === 'es' ? 'en' : 'es';
+                applyLanguage(nextLang);
+            });
+        }
+
+        // Initial check and language apply
+        applyLanguage(currentLang);
+        updateUI();
+
+    </script>
+</body></html>

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MONSTER MUSIC | Unleash The Sound</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&amp;family=Hanken+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#3b494b",
+                        "primary-fixed": "#7df4ff",
+                        "surface-container-low": "#1c1b1b",
+                        "on-primary-container": "#006970",
+                        "on-background": "#e5e2e1",
+                        "secondary-container": "#ff4b89",
+                        "surface-dim": "#131313",
+                        "inverse-surface": "#e5e2e1",
+                        "on-secondary": "#66002c",
+                        "tertiary-container": "#ffcfbe",
+                        "error": "#ffb4ab",
+                        "surface-container": "#201f1f",
+                        "secondary": "#ffb1c3",
+                        "primary-container": "#00f0ff",
+                        "surface-variant": "#353534",
+                        "error-container": "#93000a",
+                        "tertiary": "#fff3f0",
+                        "secondary-fixed": "#ffd9e0",
+                        "on-secondary-fixed": "#3f0019",
+                        "on-tertiary-fixed-variant": "#802a00",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-tertiary-container": "#a83a00",
+                        "on-tertiary-fixed": "#370e00",
+                        "secondary-fixed-dim": "#ffb1c3",
+                        "surface-bright": "#3a3939",
+                        "on-surface-variant": "#b9cacb",
+                        "on-secondary-container": "#590026",
+                        "on-secondary-fixed-variant": "#8f0041",
+                        "on-primary": "#00363a",
+                        "background": "#050505",
+                        "primary-fixed-dim": "#00dbe9",
+                        "surface": "#131313",
+                        "surface-tint": "#00dbe9",
+                        "inverse-primary": "#006970",
+                        "tertiary-fixed": "#ffdbce",
+                        "surface-container-highest": "#353534",
+                        "surface-container-high": "#2a2a2a",
+                        "inverse-on-surface": "#313030",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#002022",
+                        "tertiary-fixed-dim": "#ffb59a",
+                        "outline": "#849495",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary": "#5a1b00",
+                        "primary": "#dbfcff",
+                        "on-surface": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1440px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Montserrat"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-sm": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Montserrat"],
+                        "display-lg": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #050505;
+            overflow-x: hidden;
+            cursor: none;
+        }
+        .glass-panel {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.03);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+        .neon-text-cyan {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.8), 0 0 20px rgba(0, 240, 255, 0.4);
+        }
+        .neon-text-pink {
+            text-shadow: 0 0 10px rgba(255, 75, 137, 0.8), 0 0 20px rgba(255, 75, 137, 0.4);
+        }
+        .pulse-effect {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 20px rgba(0, 240, 255, 0.6); }
+            50% { opacity: .9; transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 240, 255, 0.9); }
+        }
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            background: #00f0ff;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 0 15px #00f0ff;
+            transition: transform 0.1s ease-out;
+        }
+        .custom-cursor-follower {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #ff4b89;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.15s ease-out;
+        }
+        .hero-entrance {
+            animation: slideUpFade 1.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+        @keyframes slideUpFade {
+            from { transform: translateY(50px) scale(0.9); opacity: 0; filter: blur(10px); }
+            to { transform: translateY(0) scale(1); opacity: 1; filter: blur(0); }
+        }
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        canvas#confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background scroll-smooth">
+<div class="custom-cursor hidden md:block" id="cursor"></div>
+<div class="custom-cursor-follower hidden md:block" id="cursor-follower"></div>
+<canvas id="confetti"></canvas>
+<!-- Background Shader -->
+<div class="fixed inset-0 z-0">
+<!-- STITCH_SHADER_START:ANIMATION_3 class="absolute inset-0 w-full h-full opacity-60" -->
+<div class="absolute inset-0 w-full h-full opacity-60" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_3" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_3');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec2 p = (v_texCoord - 0.5) * 2.0;
+    p.x *= u_resolution.x / u_resolution.y;
+    
+    // Create moving noise/fog
+    float color = 0.0;
+    for(float i = 1.0; i < 4.0; i++){
+        p.x += 0.3 / i * sin(i * 3.0 * p.y + u_time + i * 0.5);
+        p.y += 0.3 / i * cos(i * 3.0 * p.x + u_time + i * 0.8);
+        color += abs(0.01 / p.y);
+    }
+    
+    // Deep nightclub colors
+    vec3 baseColor = vec3(0.02, 0.02, 0.05); // Midnight blue
+    vec3 accent1 = vec3(1.0, 0.0, 0.5);   // Magenta
+    vec3 accent2 = vec3(0.0, 0.9, 1.0);   // Cyan
+    
+    vec3 finalColor = mix(baseColor, accent1, color * 0.5);
+    finalColor = mix(finalColor, accent2, sin(u_time * 0.5) * 0.2 + 0.2);
+    
+    // Darken edges for depth
+    float vignette = 1.0 - smoothstep(0.5, 1.5, length(v_texCoord - 0.5));
+    
+    gl_FragColor = vec4(finalColor * vignette, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_3 -->
+</div>
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-[100] h-20 px-margin-mobile md:px-margin-desktop bg-surface/60 backdrop-blur-xl border-b border-white/10 flex justify-between items-center shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+<div class="flex items-center space-x-4">
+<img alt="Monster Music Logo" class="h-10 w-auto brightness-125 drop-shadow-[0_0_10px_#00f0ff]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq1_hSI335FZv_zhA99EYLt0TD2FdA_HeYt8g_5QF6z2Zn77NMwyQiyBzF6ooBqGqj_q0RG1YdQsTOCFjTZe6Tr-5ANehn9IDdV8-zvmdD7CFZL0XOmAuOSKXNMRfS-SW33_9w50suFsLohrTfDcxIfdVcWAySQv28A82GYzlPEeSzZKdS20lsDI9tj_k7MomMaPx2KuvOl41K8g5iAFTaj9pviafTgUDwXLdESruWdvN81aBxpRdbszYvQ0UmXWxYR2LaoA6E4ph2"/>
+</div>
+<div class="hidden md:flex items-center space-x-gutter">
+<a class="font-label-lg text-label-lg text-primary-fixed font-bold border-b-2 border-primary-container drop-shadow-[0_0_10px_#00f0ff]" href="#home">Home</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant/80 hover:text-primary transition-colors duration-300" href="#services">Services</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant/80 hover:text-primary transition-colors duration-300" href="#artists">Artists</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant/80 hover:text-primary transition-colors duration-300" href="#events">Events</a>
+</div>
+<div class="flex items-center space-x-6">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform">volume_up</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform">account_circle</span>
+</div>
+</nav>
+<main class="relative z-10">
+<!-- Hero Section -->
+<section class="min-h-screen flex flex-col items-center justify-center text-center px-margin-mobile pt-20" id="home">
+<div class="hero-entrance space-y-8">
+<div class="relative inline-block mb-8">
+<img alt="MONSTER MUSIC Metallic Logo" class="w-full max-w-4xl mx-auto drop-shadow-[0_0_50px_rgba(0,219,233,0.3)] animate-pulse" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq1_hSI335FZv_zhA99EYLt0TD2FdA_HeYt8g_5QF6z2Zn77NMwyQiyBzF6ooBqGqj_q0RG1YdQsTOCFjTZe6Tr-5ANehn9IDdV8-zvmdD7CFZL0XOmAuOSKXNMRfS-SW33_9w50suFsLohrTfDcxIfdVcWAySQv28A82GYzlPEeSzZKdS20lsDI9tj_k7MomMaPx2KuvOl41K8g5iAFTaj9pviafTgUDwXLdESruWdvN81aBxpRdbszYvQ0UmXWxYR2LaoA6E4ph2"/>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg tracking-tighter italic uppercase text-primary leading-tight">
+<span class="block neon-text-cyan">Unleash</span>
+<span class="block text-secondary neon-text-pink">The Sound</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant/90 max-w-2xl mx-auto mb-10">
+                    Engineered for chaos. Premium sound, lighting, and performance for the most exclusive events.
+                </p>
+<div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-gutter w-full">
+<button class="bg-primary-container text-on-primary-fixed px-10 py-5 font-headline-sm text-headline-sm rounded-xl pulse-effect transition-all active:scale-95 w-full" id="cta-button">
+                        Book Your Event
+                    </button>
+<button class="border border-white/20 glass-panel px-10 py-5 font-headline-sm text-headline-sm rounded-xl hover:bg-white/5 transition-all w-full">
+                        View Showreel
+                    </button>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="services">
+<h2 class="font-headline-lg text-headline-md md:text-headline-lg mb-16 text-center text-primary-fixed neon-text-cyan uppercase">Premium Services</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-mobile">
+<!-- Service 1 -->
+<div class="glass-panel p-8 rounded-3xl group cursor-pointer hover:-translate-y-2 transition-all duration-500 service-card">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary-container group-hover:text-black transition-colors">
+<span class="material-symbols-outlined text-4xl">graphic_eq</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4 text-white uppercase tracking-wider">Audio Engineering</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Precision-tuned sound systems that vibrate the soul. High-fidelity acoustic architecture for any space.</p>
+<div class="mt-8 h-1 w-0 group-hover:w-full bg-primary-container transition-all duration-500 shadow-[0_0_10px_#00f0ff]"></div>
+</div>
+<!-- Service 2 -->
+<div class="glass-panel p-8 rounded-3xl group cursor-pointer hover:-translate-y-2 transition-all duration-500 service-card">
+<div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center mb-6 group-hover:bg-secondary-container group-hover:text-black transition-colors">
+<span class="material-symbols-outlined text-4xl">light_mode</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4 text-white uppercase tracking-wider">Visual FX</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Cinematic lighting arrays and volumetric atmospheric effects designed to create immersive environments.</p>
+<div class="mt-8 h-1 w-0 group-hover:w-full bg-secondary-container transition-all duration-500 shadow-[0_0_10px_#ff4b89]"></div>
+</div>
+<!-- Service 3 -->
+<div class="glass-panel p-8 rounded-3xl group cursor-pointer hover:-translate-y-2 transition-all duration-500 service-card">
+<div class="w-16 h-16 rounded-2xl bg-tertiary/10 flex items-center justify-center mb-6 group-hover:bg-tertiary transition-colors group-hover:text-black">
+<span class="material-symbols-outlined text-4xl">person</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4 text-white uppercase tracking-wider">Elite Talent</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">World-class DJs and performers curated for high-energy sets that never let the intensity drop.</p>
+<div class="mt-8 h-1 w-0 group-hover:w-full bg-tertiary transition-all duration-500 shadow-[0_0_10px_#fff3f0]"></div>
+</div>
+</div>
+</section>
+<!-- CTA Floating Interaction -->
+<div class="fixed bottom-8 right-8 z-[100] flex flex-col items-center space-y-4">
+<button class="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-primary-fixed hover:bg-primary/20 transition-all" id="mute-toggle">
+<span class="material-symbols-outlined">volume_up</span>
+</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="relative z-10 py-12 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest border-t border-white/5 bg-gradient-to-b from-transparent to-black">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 text-center">
+<div class="flex flex-col items-center md:items-start space-y-2">
+<span class="font-display-lg text-headline-sm text-primary italic tracking-tighter">MONSTER MUSIC</span>
+<p class="font-label-lg text-label-lg text-on-surface-variant/60 uppercase tracking-widest">Engineered For Chaos</p>
+</div>
+<div class="flex space-x-gutter">
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">Tech Rider</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">Press Kit</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">Terms</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">Privacy</a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/40">© 2024 MONSTER MUSIC. ALL RIGHTS RESERVED.</p>
+</div>
+</footer>
+<script>
+        // Custom Cursor Logic
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('cursor-follower');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                follower.style.left = (e.clientX - 10) + 'px';
+                follower.style.top = (e.clientY - 10) + 'px';
+            }, 50);
+        });
+
+        // Audio System
+        const bassHit = new Howl({
+            src: ['https://actions.google.com/sounds/v1/science_fiction/low_vibrating_hum.ogg'],
+            volume: 0.5
+        });
+
+        const whoosh = new Howl({
+            src: ['https://actions.google.com/sounds/v1/foley/whoosh.ogg'],
+            volume: 0.2
+        });
+
+        // Event Triggers
+        document.getElementById('cta-button').addEventListener('click', () => {
+            bassHit.play();
+            createConfetti();
+        });
+
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                whoosh.play();
+            });
+        });
+
+        // Mute Toggle Logic
+        let isMuted = false;
+        const muteBtn = document.getElementById('mute-toggle');
+        muteBtn.addEventListener('click', () => {
+            isMuted = !isMuted;
+            Howler.mute(isMuted);
+            muteBtn.querySelector('span').textContent = isMuted ? 'volume_off' : 'volume_up';
+        });
+
+        // Simple Particle Confetti
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                particles.push({
+                    x: window.innerWidth / 2,
+                    y: window.innerHeight / 2,
+                    vx: (Math.random() - 0.5) * 20,
+                    vy: (Math.random() - 0.5) * 20,
+                    size: Math.random() * 5 + 2,
+                    color: Math.random() > 0.5 ? '#00f0ff' : '#ff4b89',
+                    life: 100
+                });
+            }
+        }
+
+        function updateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles = particles.filter(p => p.life > 0);
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += 0.2; // gravity
+                p.life -= 1;
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = p.life / 100;
+                ctx.fillRect(p.x, p.y, p.size, p.size);
+            });
+            requestAnimationFrame(updateConfetti);
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        updateConfetti();
+
+        // Smooth Scroll Micro-interactions
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            document.querySelector('nav').style.background = scrolled > 50 ? 'rgba(5, 5, 5, 0.9)' : 'rgba(19, 19, 19, 0.6)';
+        });
+    </script>
+</body></html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MONSTER MUSIC | Monster Music Showreel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&amp;family=Hanken+Grotesk:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;family=Montserrat:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+<style>.glass-panel {
+    background: rgba(14, 14, 14, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden
+    }
+.glass-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none
+    }
+.neon-border-cyan {
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3), inset 0 0 10px rgba(0, 240, 255, 0.2);
+    border: 1px solid #00f0ff
+    }
+.neon-border-magenta {
+    box-shadow: 0 0 15px rgba(255, 75, 137, 0.3), inset 0 0 10px rgba(255, 75, 137, 0.2);
+    border: 1px solid #ff4b89
+    }
+.glow-text-cyan {
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.6)
+    }
+.custom-noise {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDlHqOFqOQaNJYrE6iZsf_BkTyB0QtLO4p3i5ymqZsQBNuITO-4GttKD8WyIYWQSZ092s9srPR_ZvLS7aSPod_HKXdmFlvkINSiKAvaS1p7KGy6IvlnB5JlDSGm3C4TCZDN34LeKOyXpovuhIQCAdGkX1nmfoIzJdh1ZA_eQQ63QawmGU-1S-EEXJiYpEgD2ghDaYwMa6lLImO-4SpkRPnFiscD3Q1mOo0Vs4gKjIBPglHBN211G07YmMEvxQvZ_tshYxFyveb_SJs3);
+    opacity: 0.03;
+    pointer-events: none
+    }
+@keyframes pulse-cyan {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+        } 50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+        }
+    }
+.animate-pulse-cyan {
+    animation: pulse-cyan 2s infinite ease-in-out
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }</style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-container": "#00f0ff",
+                      "on-surface": "#e5e2e1",
+                      "surface-tint": "#00dbe9",
+                      "tertiary-fixed-dim": "#ffb59a",
+                      "on-tertiary-fixed-variant": "#802a00",
+                      "background": "#050505",
+                      "on-secondary-fixed": "#3f0019",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-lowest": "#0e0e0e",
+                      "secondary-fixed-dim": "#ffb1c3",
+                      "on-secondary-fixed-variant": "#8f0041",
+                      "on-primary-fixed-variant": "#004f54",
+                      "surface": "#131313",
+                      "on-primary-fixed": "#002022",
+                      "surface-bright": "#3a3939",
+                      "primary": "#dbfcff",
+                      "secondary-container": "#ff4b89",
+                      "on-tertiary-fixed": "#370e00",
+                      "on-surface-variant": "#b9cacb",
+                      "secondary-fixed": "#ffd9e0",
+                      "primary-fixed": "#7df4ff",
+                      "surface-container-high": "#2a2a2a",
+                      "surface-container-low": "#1c1b1b",
+                      "on-primary-container": "#006970",
+                      "surface-dim": "#131313",
+                      "on-tertiary-container": "#a83a00",
+                      "on-background": "#e5e2e1",
+                      "outline": "#849495",
+                      "inverse-on-surface": "#313030",
+                      "on-tertiary": "#5a1b00",
+                      "secondary": "#ffb1c3",
+                      "on-secondary-container": "#590026",
+                      "error": "#ffb4ab",
+                      "on-secondary": "#66002c",
+                      "surface-container-highest": "#353534",
+                      "primary-fixed-dim": "#00dbe9",
+                      "outline-variant": "#3b494b",
+                      "inverse-primary": "#006970",
+                      "on-error": "#690005",
+                      "surface-container": "#201f1f",
+                      "surface-variant": "#353534",
+                      "on-primary": "#00363a",
+                      "tertiary-container": "#ffcfbe",
+                      "error-container": "#93000a",
+                      "tertiary-fixed": "#ffdbce",
+                      "tertiary": "#fff3f0",
+                      "inverse-surface": "#e5e2e1"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "margin-desktop": "64px",
+                      "container-max": "1440px",
+                      "unit": "8px"
+              },
+              "fontFamily": {
+                      "body-md": ["Hanken Grotesk"],
+                      "display-lg": ["Montserrat"],
+                      "label-lg": ["Hanken Grotesk"],
+                      "headline-lg": ["Montserrat"],
+                      "headline-md": ["Montserrat"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "headline-sm": ["Montserrat"],
+                      "headline-lg-mobile": ["Montserrat"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                      "label-lg": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- Audio Feedback Assets (Simulated via script) -->
+<script>
+        const sfx_bass = new Howl({ src: ['https://actions.google.com/sounds/v1/science_fiction/low_vibration_short.ogg'] });
+        const sfx_whoosh = new Howl({ src: ['https://actions.google.com/sounds/v1/science_fiction/whoosh_short.ogg'] });
+
+        function playBass() { sfx_bass.play(); }
+        function playWhoosh() { sfx_whoosh.play(); }
+    </script>
+<!-- Top Navigation (Mobile Adaptive) -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/10 flex items-center justify-between px-margin-mobile py-4 shadow-[0_0_20px_rgba(0,240,255,0.15)]">
+<span class="font-display-lg text-headline-sm tracking-tighter text-primary-container">MONSTER MUSIC</span>
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" onclick="playWhoosh()">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" onclick="playWhoosh()">account_circle</button>
+</div>
+</nav>
+<!-- Background Atmospheric Effect -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute top-1/4 left-0 w-64 h-64 bg-primary-container/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-1/4 right-0 w-64 h-64 bg-secondary-container/10 rounded-full blur-[120px]"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="relative z-10 pt-20 pb-32">
+<!-- Section 1: Hero Showreel -->
+<section class="px-margin-mobile mb-10">
+<div class="relative group aspect-[9/16] md:aspect-video rounded-xl overflow-hidden glass-panel neon-border-cyan mb-4" onclick="playBass()">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A high-energy cinematic wide shot of a futuristic nightclub with thousands of people dancing. The stage is dominated by a giant holographic 'Monster Music' logo emitting intense Electric Cyan and Magenta laser beams. The lighting is dark and moody with vibrant neon highlights reflecting off metallic surfaces and polished glass floors. The atmosphere is electric and chaotic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB7YcP_1A2cCTC4cWACAqzXIRZEkd5fO13hyFs4PCI7oc3-D-kqJOkSM-cX3Hid5K0ttvyjWhB8xlDGIG1SmJMyNWmdpeZDZBk6Kvst8atjcK8y6hr3vyn0RGIbPqOrGlRmU4Su8zChXN_JXsLGQuUPGSMCqeuDtM4NF4a-NsUS5mIgjIHPDAnridJAh-GzCz_Zm6Y0UoPAlyfmNqE_6hY6F4KrW3nTqax9ZVpYvJT-U7TjfH_XJe5WHYc4N5o-bpW-9eORU3-BGzgn')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
+<!-- Central Play Interaction -->
+<div class="absolute inset-0 flex items-center justify-center">
+<button class="w-20 h-20 rounded-full bg-primary-container text-background flex items-center justify-center shadow-[0_0_30px_rgba(0,240,255,0.8)] animate-pulse-cyan active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<!-- Overlay Info -->
+<div class="absolute bottom-6 left-6 right-6">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-secondary-container text-white px-2 py-0.5 rounded text-[10px] font-bold tracking-widest uppercase">Live Now</span>
+<span class="text-on-surface-variant text-label-lg font-label-lg">MONSTER REEL 2024</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-white leading-none mb-1">THE BEAST UNLEASHED</h1>
+<p class="text-primary-container text-body-md font-body-md opacity-80">Production: MONSTER MUSIC</p>
+</div>
+</div>
+</section>
+<!-- Section 2: High-Energy Clips (Vertical List) -->
+<section class="px-margin-mobile">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-sm text-headline-sm text-white tracking-tight flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container">bolt</span>
+                    HIGH-ENERGY CLIPS
+                </h2>
+<span class="text-on-surface-variant text-label-lg">12 CLIPS</span>
+</div>
+<!-- Scrollable Clips -->
+<div class="space-y-6">
+<!-- Clip 1 -->
+<div class="relative rounded-xl overflow-hidden glass-panel p-1 group active:scale-95 transition-all duration-300" onclick="playWhoosh()">
+<div class="relative aspect-video rounded-lg overflow-hidden neon-border-magenta">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A close-up of a high-tech DJ controller in a dark studio. The buttons and sliders are glowing with vibrant pink and blue LED lights. Smoke from a fog machine drifts across the metallic surface, catching the neon light. The mood is intense, professional, and focused on digital craftsmanship in the music industry." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBgnyKfam48C8dH4GJwYlNYguYFEevtzKWAJqOrnofCuZ8RfjB-V15RL9AkVA-zY_nci06ZK55bagkDAQ_rqyrG_oX1gbt2jmncSG84TD3OKnzPkNv-aOCQvL1CgyDLk3axJyaoZQxDPWOxItgiNSWiiFcF3eFxfSO6PK-bgIpQzfXG6wzOPST4_vpKGSeTnTAqr8l7mr_yVXdZo6qAUJrAVvosZNEdkGKvF5AquQ87xfgW7Pxmgg-aGhQ0IS9exYxNWJ9_FB3HM1ja')">
+</div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors"></div>
+<div class="absolute top-3 right-3 glass-panel px-3 py-1 rounded-full text-[10px] text-white font-bold">0:45</div>
+<div class="absolute bottom-3 left-3">
+<span class="glow-text-cyan text-primary-container font-headline-sm text-headline-sm leading-tight block">CYBER PUNCH</span>
+<span class="text-white/60 text-label-lg font-label-lg">HEAVY BASS DROP</span>
+</div>
+</div>
+</div>
+<!-- Clip 2 -->
+<div class="relative rounded-xl overflow-hidden glass-panel p-1 group active:scale-95 transition-all duration-300" onclick="playWhoosh()">
+<div class="relative aspect-video rounded-lg overflow-hidden border border-white/10 group-hover:neon-border-cyan transition-all">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="An abstract 3D visualization of sound waves rendered as flowing neon ribbons in a dark void. The ribbons are colored in a gradient from Electric Cyan to Deep Magenta, intertwining and pulsing with energy. Silver metallic particles float in the air around the waves, creating a sense of luxury and depth." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDsH8IeJCt-5TvXtnzx4TnaZzkM3nn-mXZt56Y4D4eKH_IFOqFlCwRh9UcSQePxd9ZOrgp-Cx4zHdDDbOnRqhXd8h3vg9NazW0z39ZzV2ofr5BI2Vlyboe3DLmlqst-m1OFf9EwBTpf99o732FWPdrHUy0RT8jssqu9iBfmdJSdfjKHvVewyIthz1fQr-BHn5cLmKJ6f2A2GSmus3voQBIw_RRi4Xv5wn0fTjJymno7aCzFN6uRG5a5jHFsR0EhFKcbD_zVXkUc--Pu')">
+</div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors"></div>
+<div class="absolute top-3 right-3 glass-panel px-3 py-1 rounded-full text-[10px] text-white font-bold">1:12</div>
+<div class="absolute bottom-3 left-3">
+<span class="glow-text-cyan text-primary-container font-headline-sm text-headline-sm leading-tight block">NEON PULSE</span>
+<span class="text-white/60 text-label-lg font-label-lg">SYNTHWAVE VISUALS</span>
+</div>
+</div>
+</div>
+<!-- Clip 3 -->
+<div class="relative rounded-xl overflow-hidden glass-panel p-1 group active:scale-95 transition-all duration-300" onclick="playWhoosh()">
+<div class="relative aspect-video rounded-lg overflow-hidden border border-white/10 group-hover:neon-border-magenta transition-all">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A cinematic low-angle shot of a crowd's silhouettes with their hands raised in the air during a concert. Behind them, massive LED screens display distorted glitch art in high-contrast cyan and white. Volumetric light beams cut through the hazy air, creating a powerful and immersive concert experience mood." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDBcX8lmBp8FaaR-jw3di_EB04g_w139IKMvMqn0FjbftcSgtAQgIsK0GJTiohKUu3IEq71Kgee7BkHUBPlKsnloplNPlo4y76nhcy0HnwgRV6XiSDVQtgYwJqiqyU0GaBV10DWIRQhzcv-9b5u0Bv8zsvRr_OOIQSinHDJilCGkXXNga1Y51UAGjCjXO-5IqctTYlXXLmR3aK6uAM2Byat7eRlQrP7UeN5Q0v2bJOi2t3xj3VPXxiszsgJFqDB7idxsfcf294if01V')">
+</div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors"></div>
+<div class="absolute top-3 right-3 glass-panel px-3 py-1 rounded-full text-[10px] text-white font-bold">0:58</div>
+<div class="absolute bottom-3 left-3">
+<span class="glow-text-cyan text-primary-container font-headline-sm text-headline-sm leading-tight block">RISE UP</span>
+<span class="text-white/60 text-label-lg font-label-lg">CROWD ANTHEM</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell (SideNavBar logic mapped to Bottom for Mobile) -->
+<div class="fixed bottom-0 left-0 w-full z-50 glass-panel border-t border-white/5 py-4 px-6 flex justify-between items-center shadow-2xl shadow-black">
+<div class="flex flex-col items-center gap-1 text-primary-container" onclick="playWhoosh()">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[10px] font-label-lg">Home</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-all active:scale-90" onclick="playWhoosh()">
+<span class="material-symbols-outlined text-2xl">bolt</span>
+<span class="text-[10px] font-label-lg">Trending</span>
+</div>
+<!-- Specialized Showreel Active Tab -->
+<div class="relative -top-8 w-16 h-16 rounded-full bg-primary-container text-background flex items-center justify-center shadow-[0_0_20px_rgba(0,240,255,0.6)] border-4 border-background" onclick="playBass()">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">movie</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-all active:scale-90" onclick="playWhoosh()">
+<span class="material-symbols-outlined text-2xl">settings_input_component</span>
+<span class="text-[10px] font-label-lg">Gear</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-all active:scale-90" onclick="playWhoosh()">
+<span class="material-symbols-outlined text-2xl">settings</span>
+<span class="text-[10px] font-label-lg">Settings</span>
+</div>
+</div>
+<!-- Simplified Mobile Footer -->
+<footer class="relative z-10 w-full bg-surface-dim border-t border-white/5 px-margin-mobile py-12 text-center pb-32">
+<span class="font-headline-sm text-headline-sm text-on-surface block mb-4">MONSTER MUSIC</span>
+<div class="flex justify-center gap-6 mb-8 text-on-surface-variant text-body-md font-body-md">
+<a class="hover:text-primary" href="#">Contact</a>
+<a class="hover:text-primary" href="#">Terms</a>
+<a class="hover:text-primary" href="#">Support</a>
+</div>
+<p class="text-secondary-fixed-dim font-body-md text-body-md opacity-60">© 2024 MONSTER MUSIC. ALL RIGHTS RESERVED.</p>
+</footer>
+<!-- Micro-interaction Script -->
+<script>
+        // Simple observer for reveal animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.classList.remove('translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-panel').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+    </script>
+</body></html>
