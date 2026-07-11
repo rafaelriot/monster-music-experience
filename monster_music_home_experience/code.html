@@ -537,6 +537,68 @@ void main() {
   </div>
 </section>
 
+<!-- Reviews & Testimonials Section -->
+<section class="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative overflow-hidden" id="reviews-section">
+  <div class="absolute inset-0 pointer-events-none z-0">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+  </div>
+
+  <div class="relative z-10">
+    <h2 class="font-headline-lg text-headline-md md:text-headline-lg mb-4 text-center text-primary-fixed neon-text-cyan uppercase" data-i18n="reviews_title">Opiniones de Clientes</h2>
+    <p class="font-body-md text-body-md text-on-surface-variant text-center max-w-xl mx-auto mb-16" data-i18n="reviews_subtitle">Descubre por qué somos la opción favorita para los eventos más prestigiosos.</p>
+    
+    <div class="glass-panel p-8 rounded-3xl max-w-sm mx-auto text-center mb-16 border border-white/10">
+      <h3 class="font-display-lg text-5xl text-primary-fixed mb-2 font-black leading-none" id="reviews-avg">0.0</h3>
+      <div class="flex items-center justify-center gap-1 text-secondary mb-2" id="reviews-avg-stars">
+      </div>
+      <p class="font-label-lg text-xs text-on-surface-variant/60 uppercase tracking-widest" id="reviews-count-text">0 Opiniones</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-16" id="reviews-list">
+      <div class="col-span-full text-center py-12" id="reviews-loading">
+        <div class="w-10 h-10 border-4 border-primary-container border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+        <p class="font-label-lg text-on-surface-variant/60 uppercase tracking-wider" data-i18n="reviews_loading">Cargando comentarios...</p>
+      </div>
+    </div>
+
+    <div class="glass-panel p-8 md:p-12 rounded-3xl max-w-2xl mx-auto border border-white/10 relative">
+      <h3 class="font-headline-sm text-headline-sm mb-2 text-white uppercase tracking-wider text-center" data-i18n="write_review_title">Déjanos tu Calificación</h3>
+      <p class="font-body-md text-xs text-on-surface-variant/60 mb-8 text-center" data-i18n="write_review_subtitle">Tu opinión nos ayuda a seguir ofreciendo la mejor experiencia.</p>
+      
+      <form id="review-form" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+          <div>
+            <label class="block text-xs uppercase tracking-widest text-on-surface-variant/60 font-bold mb-2" data-i18n="label_name">Nombre</label>
+            <input type="text" id="review-name" required class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-primary-container outline-none transition-all">
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-widest text-on-surface-variant/60 font-bold mb-2" data-i18n="label_rating">Calificación</label>
+            <div class="flex items-center gap-2 py-2 text-on-surface-variant/40" id="star-selector">
+              <span class="material-symbols-outlined text-3xl cursor-pointer hover:scale-110 transition-all star-btn" data-value="1">star</span>
+              <span class="material-symbols-outlined text-3xl cursor-pointer hover:scale-110 transition-all star-btn" data-value="2">star</span>
+              <span class="material-symbols-outlined text-3xl cursor-pointer hover:scale-110 transition-all star-btn" data-value="3">star</span>
+              <span class="material-symbols-outlined text-3xl cursor-pointer hover:scale-110 transition-all star-btn" data-value="4">star</span>
+              <span class="material-symbols-outlined text-3xl cursor-pointer hover:scale-110 transition-all star-btn" data-value="5">star</span>
+            </div>
+            <input type="hidden" id="review-rating" value="0" required>
+          </div>
+        </div>
+        
+        <div>
+          <label class="block text-xs uppercase tracking-widest text-on-surface-variant/60 font-bold mb-2" data-i18n="label_message">Comentario</label>
+          <textarea id="review-comment" required rows="4" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-primary-container outline-none transition-all"></textarea>
+        </div>
+
+        <div id="review-msg" class="text-xs hidden font-bold text-center"></div>
+
+        <button type="submit" class="w-full bg-primary-container text-on-primary-fixed py-4 rounded-xl font-headline-sm uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2" id="submit-review-btn">
+          <span data-i18n="btn_submit_review">Enviar Calificación</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- CTA Floating Interaction -->
 <div class="fixed bottom-8 right-8 z-[100] flex flex-col items-center space-y-4">
 <a href="https://wa.me/5219935914474" target="_blank" class="w-12 h-12 rounded-full bg-[#25D366] flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all shadow-[0_0_20px_#25D366] whatsapp-btn group" id="whatsapp-float">
@@ -1217,7 +1279,16 @@ void main() {
                 services_3_desc: "DJs y artistas de clase mundial curados para sets de alta energía donde la intensidad nunca cae.",
                 reels_back: "Regresar",
                 reels_view_fb: "Ver en Facebook",
-                nav_reserve: "Reserva"
+                nav_reserve: "Reserva",
+                reviews_title: "Opiniones de Clientes",
+                reviews_subtitle: "Descubre por qué somos la opción favorita para los eventos más prestigiosos.",
+                reviews_loading: "Cargando comentarios...",
+                write_review_title: "Déjanos tu Calificación",
+                write_review_subtitle: "Tu opinión nos ayuda a seguir ofreciendo la mejor experiencia.",
+                label_name: "Nombre",
+                label_rating: "Calificación",
+                label_message: "Comentario",
+                btn_submit_review: "Enviar Calificación"
             },
             en: {
                 nav_home: "Home",
@@ -1238,7 +1309,16 @@ void main() {
                 services_3_desc: "World-class DJs and performers curated for high-energy sets that never let the intensity drop.",
                 reels_back: "Back",
                 reels_view_fb: "View on Facebook",
-                nav_reserve: "Reserve"
+                nav_reserve: "Reserve",
+                reviews_title: "Customer Reviews",
+                reviews_subtitle: "Find out why we are the top choice for the most prestigious events.",
+                reviews_loading: "Loading reviews...",
+                write_review_title: "Leave a Review",
+                write_review_subtitle: "Your feedback helps us continue providing the best experience.",
+                label_name: "Name",
+                label_rating: "Rating",
+                label_message: "Review",
+                btn_submit_review: "Submit Review"
             }
         };
 
@@ -1344,6 +1424,224 @@ void main() {
         sections.forEach(section => {
             observer.observe(section);
         });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Reviews System Logic
+        const SHEET_DB_URL = "https://script.google.com/macros/s/AKfycbwTu8FV4Q1UvaJ0rp4aWP5EQG18craI5xXPqpyfBoRU6tfJYE3Dfb1IDgWyfXwR2PRtdw/exec"; 
+        
+        const mockReviews = [
+            { name: "Carlos Mendoza", rating: 5, comment: "Excelente servicio de audio e iluminación. La pista de baile estuvo llena todo el tiempo.", date: "10/07/2026" },
+            { name: "Mariana Herrera", rating: 5, comment: "Súper profesionales, la cabina de DJ y las pantallas le dieron una vibra única a mi boda.", date: "05/07/2026" },
+            { name: "Roberto Torres", rating: 4, comment: "Muy buen servicio, puntuales y con equipo de primera calidad. Totalmente recomendados.", date: "28/06/2026" }
+        ];
+
+        let localReviews = [...mockReviews];
+
+        // Star Selector Hover/Click logic
+        const starBtns = document.querySelectorAll('#star-selector .star-btn');
+        const ratingInput = document.getElementById('review-rating');
+
+        starBtns.forEach(star => {
+            star.addEventListener('click', () => {
+                const value = parseInt(star.getAttribute('data-value'));
+                ratingInput.value = value;
+                updateStarHighlight(value);
+            });
+            star.addEventListener('mouseenter', () => {
+                const value = parseInt(star.getAttribute('data-value'));
+                updateStarHighlight(value);
+            });
+        });
+
+        const starSelector = document.getElementById('star-selector');
+        if (starSelector) {
+            starSelector.addEventListener('mouseleave', () => {
+                const value = parseInt(ratingInput.value) || 0;
+                updateStarHighlight(value);
+            });
+        }
+
+        function updateStarHighlight(val) {
+            starBtns.forEach(star => {
+                const starVal = parseInt(star.getAttribute('data-value'));
+                if (starVal <= val) {
+                    star.classList.remove('text-on-surface-variant/40');
+                    star.classList.add('text-secondary');
+                } else {
+                    star.classList.remove('text-secondary');
+                    star.classList.add('text-on-surface-variant/40');
+                }
+            });
+        }
+
+        // Render reviews
+        function renderReviews(reviews) {
+            const listContainer = document.getElementById('reviews-list');
+            const avgText = document.getElementById('reviews-avg');
+            const avgStarsContainer = document.getElementById('reviews-avg-stars');
+            const countText = document.getElementById('reviews-count-text');
+            
+            if (!listContainer) return;
+            listContainer.innerHTML = '';
+
+            if (reviews.length === 0) {
+                listContainer.innerHTML = `<p class="col-span-full text-center text-on-surface-variant/60 font-body-md" data-i18n="reviews_empty">No hay opiniones aún. ¡Sé el primero en dejar una!</p>`;
+                avgText.textContent = "0.0";
+                avgStarsContainer.innerHTML = '';
+                countText.textContent = "0 Opiniones";
+                return;
+            }
+
+            let totalStars = 0;
+            reviews.forEach(rev => {
+                totalStars += rev.rating;
+
+                const card = document.createElement('div');
+                card.className = "glass-panel p-6 rounded-3xl border border-white/10 flex flex-col justify-between";
+                
+                let starsHtml = '';
+                for (let i = 1; i <= 5; i++) {
+                    starsHtml += `<span class="material-symbols-outlined text-sm ${i <= rev.rating ? 'text-secondary' : 'text-on-surface-variant/40'}">star</span>`;
+                }
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-headline-sm text-sm text-white font-bold">${rev.name}</h4>
+                            <span class="text-[10px] text-on-surface-variant/50">${rev.date || ''}</span>
+                        </div>
+                        <div class="flex gap-1 mb-4">${starsHtml}</div>
+                        <p class="font-body-md text-xs text-on-surface-variant/80">${rev.comment}</p>
+                    </div>
+                `;
+                listContainer.appendChild(card);
+            });
+
+            const average = (totalStars / reviews.length).toFixed(1);
+            avgText.textContent = average;
+            countText.textContent = `${reviews.length} ${reviews.length === 1 ? 'Opinión' : 'Opiniones'}`;
+
+            // Render average stars
+            let avgStarsHtml = '';
+            const fullStars = Math.floor(average);
+            const hasHalf = average % 1 >= 0.5;
+            for (let i = 1; i <= 5; i++) {
+                if (i <= fullStars) {
+                    avgStarsHtml += `<span class="material-symbols-outlined">star</span>`;
+                } else if (i === fullStars + 1 && hasHalf) {
+                    avgStarsHtml += `<span class="material-symbols-outlined">star_half</span>`;
+                } else {
+                    avgStarsHtml += `<span class="material-symbols-outlined text-on-surface-variant/40">star</span>`;
+                }
+            }
+            avgStarsContainer.innerHTML = avgStarsHtml;
+        }
+
+        // Fetch comments from sheet
+        function fetchReviews() {
+            if (SHEET_DB_URL.includes("YOUR_GOOGLE_APPS_SCRIPT")) {
+                // Use local mock reviews for testing/development
+                setTimeout(() => {
+                    renderReviews(localReviews);
+                }, 500);
+                return;
+            }
+
+            fetch(SHEET_DB_URL + "?action=getReviews")
+                .then(res => res.json())
+                .then(data => {
+                    renderReviews(data);
+                })
+                .catch(err => {
+                    console.error("Error loading reviews from Google Sheet, loading offline mock instead:", err);
+                    renderReviews(localReviews);
+                });
+        }
+
+        // Submit comment
+        const reviewForm = document.getElementById('review-form');
+        const reviewMsg = document.getElementById('review-msg');
+
+        if (reviewForm) {
+            reviewForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                try {
+                    bassHit.play();
+                } catch(err) {}
+                synthAudio.playBassHit();
+
+                const name = document.getElementById('review-name').value.trim();
+                const rating = parseInt(ratingInput.value);
+                const comment = document.getElementById('review-comment').value.trim();
+
+                if (rating === 0) {
+                    if (reviewMsg) {
+                        reviewMsg.textContent = "Por favor selecciona una calificación de estrellas.";
+                        reviewMsg.className = "text-xs font-bold text-red-500 block";
+                        reviewMsg.classList.remove('hidden');
+                    }
+                    return;
+                }
+
+                const payload = { name, rating, comment };
+
+                if (reviewMsg) {
+                    reviewMsg.textContent = "Enviando calificación...";
+                    reviewMsg.className = "text-xs font-bold text-primary-fixed block";
+                    reviewMsg.classList.remove('hidden');
+                }
+
+                if (SHEET_DB_URL.includes("YOUR_GOOGLE_APPS_SCRIPT")) {
+                    // Simulating local submit in test mode
+                    setTimeout(() => {
+                        const today = new Date();
+                        const dateStr = `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth()+1).padStart(2, '0')}/${today.getFullYear()}`;
+                        localReviews.unshift({ name, rating, comment, date: dateStr });
+                        renderReviews(localReviews);
+                        
+                        reviewForm.reset();
+                        ratingInput.value = "0";
+                        updateStarHighlight(0);
+
+                        if (reviewMsg) {
+                            reviewMsg.textContent = "¡Opinión enviada con éxito (Modo Demo Local)!";
+                            reviewMsg.className = "text-xs font-bold text-[#25D366] block";
+                        }
+                    }, 800);
+                    return;
+                }
+
+                fetch(SHEET_DB_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // standard workaround for web app redirect cors policy
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                })
+                .then(() => {
+                    if (reviewMsg) {
+                        reviewMsg.textContent = "¡Gracias! Tu opinión se ha registrado correctamente.";
+                        reviewMsg.className = "text-xs font-bold text-[#25D366] block";
+                    }
+                    reviewForm.reset();
+                    ratingInput.value = "0";
+                    updateStarHighlight(0);
+                    setTimeout(fetchReviews, 1500); // Reload reviews
+                })
+                .catch(err => {
+                    console.error("Submit error:", err);
+                    if (reviewMsg) {
+                        reviewMsg.textContent = "Error al enviar la calificación. Inténtalo de nuevo.";
+                        reviewMsg.className = "text-xs font-bold text-red-500 block";
+                    }
+                });
+            });
+        }
+
+        // Fetch reviews on startup
+        fetchReviews();
 
         // Initialize Language on startup
         applyLanguage(currentLang);
