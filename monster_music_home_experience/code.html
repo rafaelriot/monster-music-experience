@@ -554,11 +554,19 @@ void main() {
       <p class="font-label-lg text-xs text-on-surface-variant/60 uppercase tracking-widest" id="reviews-count-text">0 Opiniones</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-16" id="reviews-list">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-8" id="reviews-list">
       <div class="col-span-full text-center py-12" id="reviews-loading">
         <div class="w-10 h-10 border-4 border-primary-container border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
         <p class="font-label-lg text-on-surface-variant/60 uppercase tracking-wider" data-i18n="reviews_loading">Cargando comentarios...</p>
       </div>
+    </div>
+
+    <!-- Toggle button for expanding comments -->
+    <div class="text-center mb-16 hidden" id="reviews-toggle-container">
+      <button id="reviews-toggle-btn" class="inline-flex items-center gap-2 border border-white/20 glass-panel px-8 py-4 font-headline-sm text-xs rounded-xl hover:bg-white/5 transition-all text-primary-fixed uppercase tracking-wider">
+        <span class="material-symbols-outlined" id="reviews-toggle-icon">expand_more</span>
+        <span id="reviews-toggle-text" data-i18n="btn_show_more">Ver más opiniones</span>
+      </button>
     </div>
 
     <div class="glass-panel p-8 md:p-12 rounded-3xl max-w-2xl mx-auto border border-white/10 relative">
@@ -1288,7 +1296,9 @@ void main() {
                 label_name: "Nombre",
                 label_rating: "Calificación",
                 label_message: "Comentario",
-                btn_submit_review: "Enviar Calificación"
+                btn_submit_review: "Enviar Calificación",
+                btn_show_more: "Ver más opiniones",
+                btn_show_less: "Ver menos"
             },
             en: {
                 nav_home: "Home",
@@ -1318,7 +1328,9 @@ void main() {
                 label_name: "Name",
                 label_rating: "Rating",
                 label_message: "Review",
-                btn_submit_review: "Submit Review"
+                btn_submit_review: "Submit Review",
+                btn_show_more: "Show more reviews",
+                btn_show_less: "Show less"
             }
         };
 
@@ -1478,11 +1490,16 @@ void main() {
         }
 
         // Render reviews
+        let allReviews = [];
+        let reviewsExpanded = false;
+
         function renderReviews(reviews) {
+            allReviews = reviews;
             const listContainer = document.getElementById('reviews-list');
             const avgText = document.getElementById('reviews-avg');
             const avgStarsContainer = document.getElementById('reviews-avg-stars');
             const countText = document.getElementById('reviews-count-text');
+            const toggleContainer = document.getElementById('reviews-toggle-container');
             
             if (!listContainer) return;
             listContainer.innerHTML = '';
@@ -1492,15 +1509,22 @@ void main() {
                 avgText.textContent = "0.0";
                 avgStarsContainer.innerHTML = '';
                 countText.textContent = "0 Opiniones";
+                if (toggleContainer) toggleContainer.classList.add('hidden');
                 return;
             }
 
             let totalStars = 0;
-            reviews.forEach(rev => {
+            reviews.forEach((rev, idx) => {
                 totalStars += rev.rating;
 
                 const card = document.createElement('div');
-                card.className = "glass-panel p-6 rounded-3xl border border-white/10 flex flex-col justify-between";
+                card.className = "glass-panel p-6 rounded-3xl border border-white/10 flex flex-col justify-between transition-all duration-300";
+                
+                // Hide comments after the 3rd one initially
+                if (!reviewsExpanded && idx >= 3) {
+                    card.classList.add('hidden');
+                }
+                card.setAttribute('data-review-index', idx);
                 
                 let starsHtml = '';
                 for (let i = 1; i <= 5; i++) {
@@ -1520,6 +1544,15 @@ void main() {
                 listContainer.appendChild(card);
             });
 
+            // Show/hide toggle button container if there are more than 3 reviews
+            if (toggleContainer) {
+                if (reviews.length > 3) {
+                    toggleContainer.classList.remove('hidden');
+                } else {
+                    toggleContainer.classList.add('hidden');
+                }
+            }
+
             const average = (totalStars / reviews.length).toFixed(1);
             avgText.textContent = average;
             countText.textContent = `${reviews.length} ${reviews.length === 1 ? 'Opinión' : 'Opiniones'}`;
@@ -1538,6 +1571,36 @@ void main() {
                 }
             }
             avgStarsContainer.innerHTML = avgStarsHtml;
+        }
+
+        // Setup reviews toggle event listener
+        const toggleReviewsBtn = document.getElementById('reviews-toggle-btn');
+        if (toggleReviewsBtn) {
+            toggleReviewsBtn.addEventListener('click', () => {
+                reviewsExpanded = !reviewsExpanded;
+                const cards = document.querySelectorAll('#reviews-list [data-review-index]');
+                cards.forEach(card => {
+                    const idx = parseInt(card.getAttribute('data-review-index'));
+                    if (idx >= 3) {
+                        if (reviewsExpanded) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                });
+
+                // Update button text and icon
+                const toggleText = document.getElementById('reviews-toggle-text');
+                const toggleIcon = document.getElementById('reviews-toggle-icon');
+                if (toggleText) {
+                    toggleText.setAttribute('data-i18n', reviewsExpanded ? 'btn_show_less' : 'btn_show_more');
+                    toggleText.textContent = translations[currentLang][reviewsExpanded ? 'btn_show_less' : 'btn_show_more'];
+                }
+                if (toggleIcon) {
+                    toggleIcon.textContent = reviewsExpanded ? 'expand_less' : 'expand_more';
+                }
+            });
         }
 
         // Fetch comments from sheet
