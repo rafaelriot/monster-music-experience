@@ -353,10 +353,10 @@ void main() {
 </a>
 </div>
 <div class="hidden md:flex items-center space-x-gutter">
-<a class="font-label-lg text-label-lg text-primary-fixed font-bold border-b-2 border-primary-container drop-shadow-[0_0_10px_#00f0ff]" href="#home" data-i18n="nav_home">Home</a>
-<a class="font-label-lg text-label-lg text-on-surface-variant/80 hover:text-primary transition-colors duration-300" href="#services" data-i18n="nav_services">Services</a>
-<a class="font-label-lg text-label-lg text-on-surface-variant/80 hover:text-primary transition-colors duration-300" href="../monster_music_dj_gallery_experience/code.html" data-i18n="nav_artists">Artists</a>
-<a class="font-label-lg text-label-lg text-on-surface-variant/80 hover:text-primary transition-colors duration-300" href="../monster_music_event_packages_experience/code.html" data-i18n="nav_events">Events</a>
+<a class="font-headline-sm text-headline-sm text-primary-fixed font-bold border-b-2 border-primary-container pb-1 drop-shadow-[0_0_10px_#00f0ff]" href="#home" data-i18n="nav_home">Home</a>
+<a class="font-headline-sm text-headline-sm text-on-surface-variant/80 hover:text-primary transition-colors duration-300" href="#services" data-i18n="nav_services">Services</a>
+<a class="font-headline-sm text-headline-sm text-on-surface-variant/80 hover:text-primary transition-colors duration-300" href="../monster_music_dj_gallery_experience/code.html" data-i18n="nav_artists">Artists</a>
+<a class="font-headline-sm text-headline-sm text-on-surface-variant/80 hover:text-primary transition-colors duration-300" href="../monster_music_event_packages_experience/code.html" data-i18n="nav_events">Events</a>
 </div>
 <div class="flex items-center space-x-6">
 <button class="font-label-lg text-label-lg text-primary hover:text-white transition-colors uppercase border border-primary/30 px-2 py-1 rounded" id="lang-toggle">ES</button>
@@ -1299,6 +1299,50 @@ void main() {
 
         mobileNavLinks.forEach(link => {
             link.addEventListener('click', closeDrawer);
+        });
+
+        // Desktop Navigation Active Class Handler (Scroll Spy & Click)
+        const desktopNavLinks = document.querySelectorAll('nav .hidden.md\\:flex a');
+        const sections = document.querySelectorAll('section[id]');
+
+        function setActiveLink(hash) {
+            desktopNavLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref === hash || (hash === '' && linkHref === '#home')) {
+                    link.className = "font-headline-sm text-headline-sm text-primary-fixed font-bold border-b-2 border-primary-container pb-1 drop-shadow-[0_0_10px_#00f0ff]";
+                } else if (linkHref.startsWith('#')) {
+                    link.className = "font-headline-sm text-headline-sm text-on-surface-variant/80 hover:text-primary transition-colors duration-300";
+                }
+            });
+        }
+
+        // Click handler
+        desktopNavLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    setActiveLink(href);
+                }
+            });
+        });
+
+        // Scroll spy using IntersectionObserver
+        const observerOptions = {
+            root: null,
+            rootMargin: '-40% 0px -40% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setActiveLink('#' + entry.target.id);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
         });
 
         // Initialize Language on startup

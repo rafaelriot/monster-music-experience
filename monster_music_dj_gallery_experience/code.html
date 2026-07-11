@@ -295,13 +295,14 @@ void main() {
 </a>
 </div>
 <div class="hidden md:flex items-center space-x-gutter">
-<a class="font-label-lg text-label-lg text-on-surface-variant/80 hover:text-primary transition-colors duration-300" href="../monster_music_home_experience/code.html">Home</a>
-<a class="font-label-lg text-label-lg text-on-surface-variant/80 hover:text-primary transition-colors duration-300" href="../monster_music_home_experience/code.html#services">Services</a>
-<a class="font-label-lg text-label-lg text-primary-fixed font-bold border-b-2 border-primary-container drop-shadow-[0_0_10px_#00f0ff]" href="#">Artists</a>
-<a class="font-label-lg text-label-lg text-on-surface-variant/80 hover:text-primary transition-colors duration-300" href="../monster_music_event_packages_experience/code.html">Events</a>
+<a class="font-headline-sm text-headline-sm text-on-surface-variant/80 hover:text-primary transition-colors duration-300" href="../monster_music_home_experience/code.html" data-i18n="nav_home">Home</a>
+<a class="font-headline-sm text-headline-sm text-on-surface-variant/80 hover:text-primary transition-colors duration-300" href="../monster_music_home_experience/code.html#services" data-i18n="nav_services">Services</a>
+<a class="font-headline-sm text-headline-sm text-primary-fixed font-bold border-b-2 border-primary-container pb-1 drop-shadow-[0_0_10px_#00f0ff]" href="#" data-i18n="nav_artists">Artists</a>
+<a class="font-headline-sm text-headline-sm text-on-surface-variant/80 hover:text-primary transition-colors duration-300" href="../monster_music_event_packages_experience/code.html" data-i18n="nav_events">Events</a>
 </div>
 <div class="flex items-center space-x-6">
-<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform">volume_up</span>
+<button class="font-label-lg text-label-lg text-primary hover:text-white transition-colors uppercase border border-primary/30 px-2 py-1 rounded" id="lang-toggle">ES</button>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform" id="mute-toggle">volume_up</span>
 <span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform md:inline hidden">account_circle</span>
 <button id="mobile-menu-btn" class="md:hidden text-primary hover:text-white transition-colors duration-300 flex items-center justify-center">
   <span class="material-symbols-outlined text-3xl">menu</span>
@@ -316,12 +317,12 @@ void main() {
     <span class="material-symbols-outlined text-4xl">close</span>
   </button>
   <!-- Links -->
-  <a class="font-display-lg text-2xl text-on-surface-variant/80 font-bold tracking-widest uppercase hover:text-primary transition-all mobile-nav-link" href="../monster_music_home_experience/code.html">Home</a>
-  <a class="font-display-lg text-2xl text-on-surface-variant/80 font-bold tracking-widest uppercase hover:text-primary transition-all mobile-nav-link" href="../monster_music_home_experience/code.html#services">Services</a>
-  <a class="font-display-lg text-2xl text-primary-fixed font-bold tracking-widest uppercase hover:text-white transition-all mobile-nav-link" href="#">Artists</a>
-  <a class="font-display-lg text-2xl text-on-surface-variant/80 font-bold tracking-widest uppercase hover:text-primary transition-all mobile-nav-link" href="../monster_music_event_packages_experience/code.html">Events</a>
+  <a class="font-display-lg text-2xl text-on-surface-variant/80 font-bold tracking-widest uppercase hover:text-primary transition-all mobile-nav-link" href="../monster_music_home_experience/code.html" data-i18n="nav_home">Home</a>
+  <a class="font-display-lg text-2xl text-on-surface-variant/80 font-bold tracking-widest uppercase hover:text-primary transition-all mobile-nav-link" href="../monster_music_home_experience/code.html#services" data-i18n="nav_services">Services</a>
+  <a class="font-display-lg text-2xl text-primary-fixed font-bold tracking-widest uppercase hover:text-white transition-all mobile-nav-link" href="#" data-i18n="nav_artists">Artists</a>
+  <a class="font-display-lg text-2xl text-on-surface-variant/80 font-bold tracking-widest uppercase hover:text-primary transition-all mobile-nav-link" href="../monster_music_event_packages_experience/code.html" data-i18n="nav_events">Events</a>
   <!-- Booking link -->
-  <a class="mt-8 px-8 py-3 bg-primary-container text-on-primary-fixed font-headline-sm text-headline-sm rounded-full pulse-effect transition-all mobile-nav-link" href="../monster_music_animated_booking_experience/code.html">Reserve</a>
+  <a class="mt-8 px-8 py-3 bg-primary-container text-on-primary-fixed font-headline-sm text-headline-sm rounded-full pulse-effect transition-all mobile-nav-link" href="../monster_music_animated_booking_experience/code.html" data-i18n="nav_reserve">Reserve</a>
 </div>
 <main class="relative z-10">
 <!-- Hero Section -->
@@ -331,17 +332,17 @@ void main() {
 <img alt="MONSTER MUSIC Metallic Logo" class="w-full max-w-4xl mx-auto drop-shadow-[0_0_50px_rgba(0,219,233,0.3)] animate-pulse" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq1_hSI335FZv_zhA99EYLt0TD2FdA_HeYt8g_5QF6z2Zn77NMwyQiyBzF6ooBqGqj_q0RG1YdQsTOCFjTZe6Tr-5ANehn9IDdV8-zvmdD7CFZL0XOmAuOSKXNMRfS-SW33_9w50suFsLohrTfDcxIfdVcWAySQv28A82GYzlPEeSzZKdS20lsDI9tj_k7MomMaPx2KuvOl41K8g5iAFTaj9pviafTgUDwXLdESruWdvN81aBxpRdbszYvQ0UmXWxYR2LaoA6E4ph2"/>
 </div>
 <h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg tracking-tighter italic uppercase text-primary leading-tight">
-<span class="block neon-text-cyan">Unleash</span>
-<span class="block text-secondary neon-text-pink">The Sound</span>
+<span class="block neon-text-cyan" data-i18n="hero_unleash">Unleash</span>
+<span class="block text-secondary neon-text-pink" data-i18n="hero_sound">The Sound</span>
 </h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant/90 max-w-2xl mx-auto mb-10">
+<p class="font-body-lg text-body-lg text-on-surface-variant/90 max-w-2xl mx-auto mb-10" data-i18n="hero_desc">
                     Engineered for chaos. Premium sound, lighting, and performance for the most exclusive events.
                 </p>
 <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-gutter">
-<button class="bg-primary-container text-on-primary-fixed px-10 py-5 font-headline-sm text-headline-sm rounded-xl pulse-effect transition-all active:scale-95" id="cta-button">
+<button class="bg-primary-container text-on-primary-fixed px-10 py-5 font-headline-sm text-headline-sm rounded-xl pulse-effect transition-all active:scale-95" id="cta-button" data-i18n="hero_cta_book">
                         Book Your Event
                     </button>
-<button class="border border-white/20 glass-panel px-10 py-5 font-headline-sm text-headline-sm rounded-xl hover:bg-white/5 transition-all">
+<button class="border border-white/20 glass-panel px-10 py-5 font-headline-sm text-headline-sm rounded-xl hover:bg-white/5 transition-all" data-i18n="hero_cta_reel">
                         View Showreel
                     </button>
 </div>
@@ -349,15 +350,15 @@ void main() {
 </section>
 <!-- Services Section -->
 <section class="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="services">
-<h2 class="font-headline-lg text-headline-md md:text-headline-lg mb-16 text-center text-primary-fixed neon-text-cyan uppercase">Premium Services</h2>
+<h2 class="font-headline-lg text-headline-md md:text-headline-lg mb-16 text-center text-primary-fixed neon-text-cyan uppercase" data-i18n="services_title">Premium Services</h2>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
 <!-- Service 1 -->
 <div class="glass-panel p-8 rounded-3xl group cursor-pointer hover:-translate-y-2 transition-all duration-500 service-card">
 <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary-container group-hover:text-black transition-colors">
 <span class="material-symbols-outlined text-4xl">graphic_eq</span>
 </div>
-<h3 class="font-headline-sm text-headline-sm mb-4 text-white uppercase tracking-wider">Audio Engineering</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Precision-tuned sound systems that vibrate the soul. High-fidelity acoustic architecture for any space.</p>
+<h3 class="font-headline-sm text-headline-sm mb-4 text-white uppercase tracking-wider" data-i18n="services_1_title">Audio Engineering</h3>
+<p class="font-body-md text-body-md text-on-surface-variant" data-i18n="services_1_desc">Precision-tuned sound systems that vibrate the soul. High-fidelity acoustic architecture for any space.</p>
 <div class="mt-8 h-1 w-0 group-hover:w-full bg-primary-container transition-all duration-500 shadow-[0_0_10px_#00f0ff]"></div>
 </div>
 <!-- Service 2 -->
@@ -365,8 +366,8 @@ void main() {
 <div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center mb-6 group-hover:bg-secondary-container group-hover:text-black transition-colors">
 <span class="material-symbols-outlined text-4xl">light_mode</span>
 </div>
-<h3 class="font-headline-sm text-headline-sm mb-4 text-white uppercase tracking-wider">Visual FX</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Cinematic lighting arrays and volumetric atmospheric effects designed to create immersive environments.</p>
+<h3 class="font-headline-sm text-headline-sm mb-4 text-white uppercase tracking-wider" data-i18n="services_2_title">Visual FX</h3>
+<p class="font-body-md text-body-md text-on-surface-variant" data-i18n="services_2_desc">Cinematic lighting arrays and volumetric atmospheric effects designed to create immersive environments.</p>
 <div class="mt-8 h-1 w-0 group-hover:w-full bg-secondary-container transition-all duration-500 shadow-[0_0_10px_#ff4b89]"></div>
 </div>
 <!-- Service 3 -->
@@ -374,8 +375,8 @@ void main() {
 <div class="w-16 h-16 rounded-2xl bg-tertiary/10 flex items-center justify-center mb-6 group-hover:bg-tertiary transition-colors group-hover:text-black">
 <span class="material-symbols-outlined text-4xl">person</span>
 </div>
-<h3 class="font-headline-sm text-headline-sm mb-4 text-white uppercase tracking-wider">Elite Talent</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">World-class DJs and performers curated for high-energy sets that never let the intensity drop.</p>
+<h3 class="font-headline-sm text-headline-sm mb-4 text-white uppercase tracking-wider" data-i18n="services_3_title">Elite Talent</h3>
+<p class="font-body-md text-body-md text-on-surface-variant" data-i18n="services_3_desc">World-class DJs and performers curated for high-energy sets that never let the intensity drop.</p>
 <div class="mt-8 h-1 w-0 group-hover:w-full bg-tertiary transition-all duration-500 shadow-[0_0_10px_#fff3f0]"></div>
 </div>
 </div>
@@ -387,7 +388,7 @@ void main() {
 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-b from-transparent via-primary/5 to-transparent opacity-30"></div>
 </div>
 <div class="relative z-10">
-<h2 class="font-headline-lg text-headline-md md:text-headline-lg mb-16 text-center text-secondary neon-text-pink uppercase">Elite DJs</h2>
+<h2 class="font-headline-lg text-headline-md md:text-headline-lg mb-16 text-center text-secondary neon-text-pink uppercase" data-i18n="artists_title">Elite DJs</h2>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
 <!-- DJ 1: DJ Shadow -->
 <div class="glass-panel p-6 rounded-3xl group cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,240,255,0.3)] dj-card" data-dj="DJ Shadow">
@@ -396,7 +397,7 @@ void main() {
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 </div>
 <h3 class="font-display-lg text-headline-sm mb-4 neon-text-cyan uppercase tracking-tighter">DJ Shadow</h3>
-<button class="w-full py-3 border border-primary/30 rounded-xl font-label-lg text-label-lg text-primary hover:bg-primary-container hover:text-on-primary-fixed transition-all uppercase tracking-widest">View Profile</button>
+<button class="w-full py-3 border border-primary/30 rounded-xl font-label-lg text-label-lg text-primary hover:bg-primary-container hover:text-on-primary-fixed transition-all uppercase tracking-widest" data-i18n="artists_view_profile">View Profile</button>
 </div>
 <!-- DJ 2: Neon Pulse -->
 <div class="glass-panel p-6 rounded-3xl group cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,75,137,0.3)] dj-card" data-dj="Neon Pulse">
@@ -405,7 +406,7 @@ void main() {
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 </div>
 <h3 class="font-display-lg text-headline-sm mb-4 neon-text-pink uppercase tracking-tighter">Neon Pulse</h3>
-<button class="w-full py-3 border border-secondary/30 rounded-xl font-label-lg text-label-lg text-secondary hover:bg-secondary-container hover:text-on-secondary-fixed transition-all uppercase tracking-widest">View Profile</button>
+<button class="w-full py-3 border border-secondary/30 rounded-xl font-label-lg text-label-lg text-secondary hover:bg-secondary-container hover:text-on-secondary-fixed transition-all uppercase tracking-widest" data-i18n="artists_view_profile">View Profile</button>
 </div>
 <!-- DJ 3: Vortex -->
 <div class="glass-panel p-6 rounded-3xl group cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,240,255,0.3)] dj-card" data-dj="Vortex">
@@ -414,7 +415,7 @@ void main() {
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 </div>
 <h3 class="font-display-lg text-headline-sm mb-4 neon-text-cyan uppercase tracking-tighter">Vortex</h3>
-<button class="w-full py-3 border border-primary/30 rounded-xl font-label-lg text-label-lg text-primary hover:bg-primary-container hover:text-on-primary-fixed transition-all uppercase tracking-widest">View Profile</button>
+<button class="w-full py-3 border border-primary/30 rounded-xl font-label-lg text-label-lg text-primary hover:bg-primary-container hover:text-on-primary-fixed transition-all uppercase tracking-widest" data-i18n="artists_view_profile">View Profile</button>
 </div>
 <!-- DJ 4: Cyber Soul -->
 <div class="glass-panel p-6 rounded-3xl group cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,75,137,0.3)] dj-card" data-dj="Cyber Soul">
@@ -423,7 +424,7 @@ void main() {
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 </div>
 <h3 class="font-display-lg text-headline-sm mb-4 neon-text-pink uppercase tracking-tighter">Cyber Soul</h3>
-<button class="w-full py-3 border border-secondary/30 rounded-xl font-label-lg text-label-lg text-secondary hover:bg-secondary-container hover:text-on-secondary-fixed transition-all uppercase tracking-widest">View Profile</button>
+<button class="w-full py-3 border border-secondary/30 rounded-xl font-label-lg text-label-lg text-secondary hover:bg-secondary-container hover:text-on-secondary-fixed transition-all uppercase tracking-widest" data-i18n="artists_view_profile">View Profile</button>
 </div>
 </div>
 </div>
@@ -519,7 +520,7 @@ void main() {
             Howler.mute(isMuted);
             localStorage.setItem('monster_music_muted', isMuted);
             const icon = isMuted ? 'volume_off' : 'volume_up';
-            if (muteBtn) muteBtn.querySelector('span').textContent = icon;
+            if (muteBtn) muteBtn.textContent = icon;
         }
         updateMuteState();
 
@@ -588,7 +589,7 @@ void main() {
             mobileMenuBtn.addEventListener('click', () => {
                 mobileDrawer.classList.remove('translate-x-full');
                 mobileDrawer.classList.add('translate-x-0');
-                try { scratchSound.play(); } catch(e) {}
+                try { whoosh.play(); } catch(e) {}
             });
         }
 
@@ -596,7 +597,7 @@ void main() {
             if (mobileDrawer) {
                 mobileDrawer.classList.remove('translate-x-0');
                 mobileDrawer.classList.add('translate-x-full');
-                try { scratchSound.play(); } catch(e) {}
+                try { whoosh.play(); } catch(e) {}
             }
         }
 
@@ -607,6 +608,83 @@ void main() {
         mobileNavLinks.forEach(link => {
             link.addEventListener('click', closeDrawer);
         });
+
+        // Language translation system
+        const translations = {
+            es: {
+                nav_home: "Inicio",
+                nav_services: "Servicios",
+                nav_artists: "Artistas",
+                nav_events: "Eventos",
+                nav_reserve: "Reserva",
+                hero_unleash: "Desata",
+                hero_sound: "El Sonido",
+                hero_desc: "Diseñado para el caos. Sonido premium, iluminación y rendimiento para los eventos más exclusivos.",
+                hero_cta_book: "Reserva Tu Evento",
+                hero_cta_reel: "Ver Showreel",
+                services_title: "Servicios Premium",
+                services_1_title: "Ingeniería de Audio",
+                services_1_desc: "Sistemas de sonido afinados con precisión que hacen vibrar el alma. Arquitectura acústica de alta fidelidad.",
+                services_2_title: "Efectos Visuales",
+                services_2_desc: "Arreglos de luces cinemáticas y efectos atmosféricos volumétricos para crear ambientes inmersivos.",
+                services_3_title: "Talento de Élite",
+                services_3_desc: "DJs y artistas de clase mundial curados para sets de alta energía donde la intensidad nunca cae.",
+                artists_title: "Artistas de Élite",
+                artists_view_profile: "Ver Perfil"
+            },
+            en: {
+                nav_home: "Home",
+                nav_services: "Services",
+                nav_artists: "Artists",
+                nav_events: "Events",
+                nav_reserve: "Reserve",
+                hero_unleash: "Unleash",
+                hero_sound: "The Sound",
+                hero_desc: "Engineered for chaos. Premium sound, lighting, and performance for the most exclusive events.",
+                hero_cta_book: "Book Your Event",
+                hero_cta_reel: "View Showreel",
+                services_title: "Premium Services",
+                services_1_title: "Audio Engineering",
+                services_1_desc: "Precision-tuned sound systems that vibrate the soul. High-fidelity acoustic architecture for any space.",
+                services_2_title: "Visual FX",
+                services_2_desc: "Cinematic lighting arrays and volumetric atmospheric effects designed to create immersive environments.",
+                services_3_title: "Elite Talent",
+                services_3_desc: "World-class DJs and performers curated for high-energy sets that never let the intensity drop.",
+                artists_title: "Elite DJs",
+                artists_view_profile: "View Profile"
+            }
+        };
+
+        let currentLang = localStorage.getItem('monster_music_lang') || 'es';
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('monster_music_lang', lang);
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            const toggleBtn = document.getElementById('lang-toggle');
+            if (toggleBtn) {
+                toggleBtn.textContent = lang.toUpperCase();
+            }
+        }
+
+        const langBtn = document.getElementById('lang-toggle');
+        if (langBtn) {
+            langBtn.addEventListener('click', () => {
+                try {
+                    whoosh.play();
+                } catch(e) {}
+                const nextLang = currentLang === 'es' ? 'en' : 'es';
+                applyLanguage(nextLang);
+            });
+        }
+
+        // Initialize Language on startup
+        applyLanguage(currentLang);
     </script>
 <script>
     // DJ Card Interactions
